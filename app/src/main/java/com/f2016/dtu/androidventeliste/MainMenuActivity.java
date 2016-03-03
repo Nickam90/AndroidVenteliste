@@ -12,5 +12,6 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         Log.d("hej", "hej");
+        Log.d("hej", "hej");
     }
 }
