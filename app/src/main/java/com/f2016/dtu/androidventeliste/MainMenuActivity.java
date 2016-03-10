@@ -9,13 +9,6 @@ import android.widget.EditText;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    EditText loginNumberInput1;
-    EditText loginNumberInput2;
-    EditText loginNumberInput3;
-    EditText loginNumberInput4;
-    EditText loginNumberInput5;
-    EditText loginNumberInput6;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
