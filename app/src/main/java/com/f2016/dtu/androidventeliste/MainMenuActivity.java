@@ -9,6 +9,13 @@ import android.widget.EditText;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+    private EditText loginNumberInput1;
+    private EditText loginNumberInput2;
+    private EditText loginNumberInput3;
+    private EditText loginNumberInput4;
+    private EditText loginNumberInput5;
+    private EditText loginNumberInput6;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +28,11 @@ public class MainMenuActivity extends AppCompatActivity {
         loginNumberInput6 = (EditText)findViewById(R.id.loginNumberField6);
 
         loginNumberInput1.setOnKeyListener(keyPressHandler);
+        loginNumberInput2.setOnKeyListener(keyPressHandler);
+        loginNumberInput3.setOnKeyListener(keyPressHandler);
+        loginNumberInput4.setOnKeyListener(keyPressHandler);
+        loginNumberInput5.setOnKeyListener(keyPressHandler);
+        loginNumberInput6.setOnKeyListener(keyPressHandler);
 
         loginNumberInput1.requestFocus();
 
@@ -30,7 +42,7 @@ public class MainMenuActivity extends AppCompatActivity {
         @Override
         public boolean onKey(View v, int keyCode, KeyEvent event) {
             if(event.getAction() == KeyEvent.ACTION_UP ){
-                Log.d("KeyEvent UP", "Pressed");
+                Log.d("KeyEvent UP", "Pressed " + event.getCharacters() + ", " + event.getKeyCode());
 
             }
             return false;
