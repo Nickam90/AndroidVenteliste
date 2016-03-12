@@ -136,7 +136,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     private void login() {
-Log.d("Login", "Login");
+        Log.d("Login", "Login");
         String digit1 = loginNumberInput1.getText().toString();
         String digit2 = loginNumberInput2.getText().toString();
         String digit3 = loginNumberInput3.getText().toString();
@@ -144,7 +144,7 @@ Log.d("Login", "Login");
         String digit5 = loginNumberInput5.getText().toString();
         String digit6 = loginNumberInput6.getText().toString();
 
-        String code = digit1+digit2+digit3+digit4+digit5+digit6;
+        String code = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
         Log.d("Login", "Code: " + code);
 
         loginNumberInput1.setText("");
