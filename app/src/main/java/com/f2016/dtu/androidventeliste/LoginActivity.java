@@ -7,7 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainMenuActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText loginNumberInput1;
     private EditText loginNumberInput2;

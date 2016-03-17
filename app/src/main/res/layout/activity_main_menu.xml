@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:screenOrientation="portrait"
-    tools:context="com.f2016.dtu.androidventeliste.MainMenuActivity"
+    tools:context=".LoginActivity"
     android:textAlignment="center">
 
     <TextView
