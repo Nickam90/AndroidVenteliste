@@ -174,6 +174,9 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
         return false;*/
+        if(input.matches("\\d")) return true;
+        return false;
+/*
         try {
             int num = Integer.parseInt(input);
             Log.i("",num+" is a number");
@@ -181,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             Log.i("",input+"is not a number");
             return false;
-        }
+        }*/
     }
 
     class onTextChangeListner implements TextWatcher{
