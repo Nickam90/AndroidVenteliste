@@ -105,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             login();
 
         }
+
         switch (key){
             case 0:
                 loginNumberInput1.requestFocus();
