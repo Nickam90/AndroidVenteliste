@@ -2,6 +2,8 @@ package com.f2016.dtu.androidventeliste;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,20 +22,28 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         loginNumberInput1 = (EditText)findViewById(R.id.loginNumberField1);
         loginNumberInput2 = (EditText)findViewById(R.id.loginNumberField2);
         loginNumberInput3 = (EditText)findViewById(R.id.loginNumberField3);
         loginNumberInput4 = (EditText)findViewById(R.id.loginNumberField4);
         loginNumberInput5 = (EditText)findViewById(R.id.loginNumberField5);
         loginNumberInput6 = (EditText)findViewById(R.id.loginNumberField6);
-
+/*
         loginNumberInput1.setOnKeyListener(keyPressHandler);
         loginNumberInput2.setOnKeyListener(keyPressHandler);
         loginNumberInput3.setOnKeyListener(keyPressHandler);
         loginNumberInput4.setOnKeyListener(keyPressHandler);
         loginNumberInput5.setOnKeyListener(keyPressHandler);
         loginNumberInput6.setOnKeyListener(keyPressHandler);
+        */
+
+        loginNumberInput1.addTextChangedListener(new onTextChangeListner());
+        loginNumberInput2.addTextChangedListener(new onTextChangeListner());
+        loginNumberInput3.addTextChangedListener(new onTextChangeListner());
+        loginNumberInput4.addTextChangedListener(new onTextChangeListner());
+        loginNumberInput5.addTextChangedListener(new onTextChangeListner());
+        loginNumberInput6.addTextChangedListener(new onTextChangeListner());
 
         loginNumberInput1.setOnFocusChangeListener(focusChangeHandler);
         loginNumberInput2.setOnFocusChangeListener(focusChangeHandler);
@@ -45,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         loginNumberInput1.requestFocus();
 
     }
+
+
 
     View.OnFocusChangeListener focusChangeHandler = new View.OnFocusChangeListener() {
         @Override
@@ -78,11 +90,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
-    View.OnKeyListener keyPressHandler = new View.OnKeyListener() {
+    /*View.OnKeyListener keyPressHandler = new View.OnKeyListener() {
         @Override
         public boolean onKey(View v, int keyCode, KeyEvent event) {
             if(event.getAction() == KeyEvent.ACTION_UP ) {
-               // Log.d("KeyEvent UP", "Pressed " + event.getCharacters() + ", " + event.getKeyCode());
+               Log.d("KeyEvent UP", "Pressed " + event.getCharacters() + ", " + event.getKeyCode());
                 if (event.getKeyCode() > 6 && event.getKeyCode() < 17) {
                     changeInputFocus(true);
                 }
@@ -91,21 +103,21 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
     };
+    */
 
-    private void changeInputFocus(boolean right){
+    private void changeInputFocus(boolean right) {
         int key = focusIndex;
-        if(key < 5 && right){
+        if (key < 5 && right) {
             key++;
-        }
-        else if(key > 0 && !right){
+        } else if (key > 0 && !right) {
             key--;
-        }
-        else{
+        } else {
             key = 0;
             login();
-
         }
-
+        setFocus(key);
+    }
+        private void setFocus(int key){
         switch (key){
             case 0:
                 loginNumberInput1.requestFocus();
@@ -156,4 +168,42 @@ public class LoginActivity extends AppCompatActivity {
         loginNumberInput6.setText("");
 
     }
+
+    private boolean checkNumberInput(String input){
+        /*if(input == "0" || input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "8" || input == "9"){
+            return true;
+        }
+        return false;*/
+        try {
+            int num = Integer.parseInt(input);
+            Log.i("",num+" is a number");
+            return true;
+        } catch (NumberFormatException e) {
+            Log.i("",input+"is not a number");
+            return false;
+        }
+    }
+
+    class onTextChangeListner implements TextWatcher{
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if(checkNumberInput(s.toString())){
+                changeInputFocus(true);
+            }
+
+        }
+    }
 }
+
+
