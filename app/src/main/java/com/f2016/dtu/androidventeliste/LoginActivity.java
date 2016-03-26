@@ -171,6 +171,10 @@ public class LoginActivity extends AppCompatActivity {
         new DataAccess().testDBConn();
         boolean loginSuccess = true;
         if(loginSuccess){
+            UserSession.setPatientCode(code);
+            UserSession.setPatientName("Tester");
+            UserSession.setQueueLenght(9);
+            UserSession.setQueueNumber(5);
             startActivity(new Intent(this, MainActivity.class));
         }
     }

@@ -19,7 +19,6 @@
         </activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".TriangerActivity"></activity>
-        <activity android:name=".VenteTidFragment"></activity>
     </application>
 
 </manifest>
