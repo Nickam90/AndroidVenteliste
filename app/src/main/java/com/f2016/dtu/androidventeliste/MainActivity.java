@@ -2,37 +2,27 @@ package com.f2016.dtu.androidventeliste;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.support.v7.app.ActionBarDrawerToggle;
 
 
-
-public class TriangerActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.trianger);
+        setContentView(R.layout.activity_main);
         initInstances();
-        WebView myWebView = (WebView) findViewById(R.id.webView1);
-        myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.loadUrl("file:///android_asset/trainger.html");
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        myWebView.setWebViewClient(new WebViewClient());
-
     }
 
     private void initInstances() {
@@ -40,7 +30,7 @@ public class TriangerActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        drawerToggle = new ActionBarDrawerToggle(TriangerActivity.this, drawerLayout, R.string.hello_world, R.string.hello_world);
+        drawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.hello_world, R.string.hello_world);
         drawerLayout.setDrawerListener(drawerToggle);
 
         navigation = (NavigationView) findViewById(R.id.navigation_view);
@@ -50,18 +40,17 @@ public class TriangerActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.navigation_item_1:
-                        startActivity(new Intent(TriangerActivity.this, MainActivity.class));
+                        startActivity(new Intent(MainActivity.this,MainActivity.class));
                         break;
                     case R.id.navigation_item_2:
-                        startActivity(new Intent(TriangerActivity.this, TriangerActivity.class));
+                        startActivity(new Intent(MainActivity.this,TriangerActivity.class));
                         break;
                     case R.id.navigation_item_3:
-                        startActivity(new Intent(TriangerActivity.this, GoogleActivity.class));
+                        startActivity(new Intent(MainActivity.this,GoogleActivity.class));
                         break;
                     case R.id.navigation_item_4:
-                        startActivity(new Intent(TriangerActivity.this, TriangerActivity.class));
+                        startActivity(new Intent(MainActivity.this,TriangerActivity.class));
                         break;
-
                 }
                 return false;
             }
@@ -102,7 +91,6 @@ public class TriangerActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

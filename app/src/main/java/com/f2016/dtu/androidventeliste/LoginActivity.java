@@ -1,11 +1,11 @@
 package com.f2016.dtu.androidventeliste;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
@@ -166,7 +166,13 @@ public class LoginActivity extends AppCompatActivity {
         loginNumberInput4.setText("");
         loginNumberInput5.setText("");
         loginNumberInput6.setText("");
-new DataAccess().testDBConn();
+
+
+        new DataAccess().testDBConn();
+        boolean loginSuccess = true;
+        if(loginSuccess){
+            startActivity(new Intent(this, MainActivity.class));
+        }
     }
 
     private boolean checkNumberInput(String input){

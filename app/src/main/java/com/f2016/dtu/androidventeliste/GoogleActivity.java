@@ -51,7 +51,7 @@ public class GoogleActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.navigation_item_1:
-                        startActivity(new Intent(GoogleActivity.this, AfterLoginActivity.class));
+                        startActivity(new Intent(GoogleActivity.this, MainActivity.class));
                         break;
                     case R.id.navigation_item_2:
                         startActivity(new Intent(GoogleActivity.this, TriangerActivity.class));

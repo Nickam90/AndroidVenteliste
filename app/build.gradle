@@ -25,5 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.2.0'
     compile 'com.android.support:support-v4:23.2.0'
-    compile files('C:/Android Projekter/AndroidVenteliste/libs/mysql-connector-java-3.0.17-ga/mysql-connector-java-3.0.17-ga-bin.jar')
+    compile files('libs/mysql-connector-java-3.0.17-ga-bin.jar')
 }
