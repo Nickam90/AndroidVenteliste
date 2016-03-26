@@ -166,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         loginNumberInput4.setText("");
         loginNumberInput5.setText("");
         loginNumberInput6.setText("");
-
+new DataAccess().testDBConn();
     }
 
     private boolean checkNumberInput(String input){
