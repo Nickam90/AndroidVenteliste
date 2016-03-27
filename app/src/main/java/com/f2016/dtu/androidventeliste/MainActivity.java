@@ -1,14 +1,23 @@
 package com.f2016.dtu.androidventeliste;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.widget.Toast;
+
+import com.flipboard.bottomsheet.BottomSheetLayout;
+import com.flipboard.bottomsheet.OnSheetDismissedListener;
+import com.flipboard.bottomsheet.commons.IntentPickerSheetView;
+import com.flipboard.bottomsheet.commons.MenuSheetView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +31,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        initButtomInfo();
         initInstances();
+    }
+
+    private void initButtomInfo() {
+        BottomSheetLayout bottomSheet = (BottomSheetLayout) findViewById(R.id.bottomsheet);
+        bottomSheet.showWithSheetView(LayoutInflater.from(this).inflate(R.layout.fragment_infobox, bottomSheet, false));
+
+        //FragmentTransaction transaction = new FragmentTransaction().;
     }
 
     private void initInstances() {

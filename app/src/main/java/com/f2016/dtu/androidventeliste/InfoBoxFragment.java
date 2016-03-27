@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.flipboard.bottomsheet.BottomSheetLayout;
+
 /**
  * Created by Marie on 27/03/16.
  */
