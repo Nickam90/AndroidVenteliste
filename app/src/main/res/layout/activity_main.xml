@@ -20,7 +20,6 @@
          <fragment
              android:name="com.f2016.dtu.androidventeliste.QueueExpandFragment2"
              android:id="@+id/nrInQueue"
-
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:background= "#D5D5D5"
