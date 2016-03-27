@@ -1,17 +1,20 @@
 package com.f2016.dtu.androidventeliste;
 
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class VenteTidFragment extends Fragment {
+/**
+ * Created by Marie on 27/03/16.
+ */
+public class QueueAnimationFragment extends Fragment{
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rod = inflater.inflate(R.layout.fragment_vente_tid, container, false);
-        setHasOptionsMenu(true);
-        return rod;
+        View view = inflater.inflate(R.layout.fragment_queue_animation, container, false);
+
+        return view;
     }
 }
