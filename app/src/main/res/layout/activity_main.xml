@@ -12,13 +12,14 @@
     </android.support.design.widget.CoordinatorLayout>
 
 
+
      <LinearLayout
          android:orientation="vertical"
          android:layout_width="match_parent"
          android:layout_height="match_parent">
 
          <fragment
-             android:name="com.f2016.dtu.androidventeliste.QueueExpandFragment2"
+             android:name="com.f2016.dtu.androidventeliste.QueueExpandFragment"
              android:id="@+id/nrInQueue"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"

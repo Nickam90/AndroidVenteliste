@@ -10,7 +10,7 @@ import android.widget.ExpandableListView;
 /**
  * Created by Marie on 27/03/16.
  */
-public class QueueExpandFragment2 extends Fragment {
+public class QueueExpandFragment extends Fragment {
     private String[] groups;
     private String[][] children;
     private ExpandableListView lv;
