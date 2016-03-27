@@ -18,7 +18,7 @@
          android:layout_height="match_parent">
 
          <fragment
-             android:name="com.f2016.dtu.androidventeliste.QueueExpandFragment"
+             android:name="com.f2016.dtu.androidventeliste.QueueExpandFragment2"
              android:id="@+id/nrInQueue"
 
              android:layout_width="match_parent"
