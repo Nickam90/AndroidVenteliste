@@ -20,6 +20,7 @@ public class DataAccess{
     private static final String pass = "Zitech90";
 
     public void testDBConn() {
+        /*
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -31,7 +32,7 @@ public class DataAccess{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     //Class.forName("com.mysql.jdbc.Driver");
                     Connection con = DriverManager.getConnection(url, user, pass);
-        /* System.out.println("Database connection success"); */
+        System.out.println("Database connection success");
 
                     String result = "Database connection success\n";
                     Statement st = con.createStatement();
@@ -51,5 +52,6 @@ public class DataAccess{
                 return null;
             }
         }.execute();
+        */
     }
 }

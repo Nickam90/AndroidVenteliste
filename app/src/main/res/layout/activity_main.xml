@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,34 +12,50 @@
         android:layout_height="match_parent">
     </android.support.design.widget.CoordinatorLayout>
 
-    <com.flipboard.bottomsheet.BottomSheetLayout
-        android:id="@+id/bottomsheet"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/top">
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/top_fragment"
+        android:name="com.f2016.dtu.androidventeliste.TopQueueFragment"
+        tools:layout="@layout/fragment_queue_top"
+        android:layout_marginBottom="580dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main">
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_fragment"
+        android:name="com.f2016.dtu.androidventeliste.AnimationQueueFragment"
+        tools:layout="@layout/fragment_queue_animation"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="80dp" />
+        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/bot">
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/buttom_fragment"
+        android:name="com.f2016.dtu.androidventeliste.BotQueueFragment"
+        tools:layout="@layout/fragment_queue_bot"
+        android:layout_marginTop="580dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
-     <LinearLayout
-         android:orientation="vertical"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent">
-
-         <fragment
-             android:name="com.f2016.dtu.androidventeliste.QueueExpandFragment"
-             android:id="@+id/nrInQueue"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:background= "#D5D5D5"
-             />
-
-         <fragment
-             android:name="com.f2016.dtu.androidventeliste.QueueAnimationFragment"
-             android:id="@+id/graphic"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background= "#D5D5D5"/>
-
-     </LinearLayout>
-
-    </com.flipboard.bottomsheet.BottomSheetLayout>
+    </RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"
