@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.f2016.dtu.androidventeliste.MainActivity"></activity>
-        <activity android:name="com.f2016.dtu.androidventeliste.TriangerActivity"></activity>
 
     </application>
 

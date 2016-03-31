@@ -1,7 +1,6 @@
 package com.f2016.dtu.androidventeliste;
 
 import android.support.v4.app.Fragment;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -23,8 +22,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initMainFragment();
         initTopAndButtomFragments();
         initInstances();
+    }
+
+    private void initMainFragment() {
+        FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        //top_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+        Fragment main_fragment = new AnimationQueueFragment();
+        main_fragmentTransaction
+                .add(R.id.main_fragment, main_fragment)
+                .commit();
     }
 
     private void initTopAndButtomFragments() {
@@ -56,18 +65,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
+                Fragment main_fragment = null;
+                FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 switch (id) {
                     case R.id.navigation_item_1:
-                        startActivity(new Intent(MainActivity.this,MainActivity.class));
+                        main_fragment = new AnimationQueueFragment();
+                        main_fragmentTransaction
+                                .replace(R.id.main_fragment, main_fragment)
+                                .commit();
+                        drawerLayout.closeDrawers();
                         break;
                     case R.id.navigation_item_2:
-                        startActivity(new Intent(MainActivity.this,TriangerActivity.class));
-                        break;
-                    case R.id.navigation_item_3:
-                        startActivity(new Intent(MainActivity.this,GoogleActivity.class));
-                        break;
-                    case R.id.navigation_item_4:
-                        startActivity(new Intent(MainActivity.this,TriangerActivity.class));
+                        main_fragment = new TriangerInfoFragment();
+                        main_fragmentTransaction
+                                .replace(R.id.main_fragment, main_fragment)
+                                .commit();
+                        drawerLayout.closeDrawers();
                         break;
                 }
                 return false;
