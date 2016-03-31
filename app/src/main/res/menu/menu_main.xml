@@ -5,7 +5,6 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:icon="@drawable/refresh"
         app:showAsAction="always"
-        android:title="Test" />
+        android:title="" />
 </menu>

@@ -20,7 +20,7 @@ public class DataAccess{
     private static final String pass = "Zitech90";
 
     public void testDBConn() {
-        /*
+
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -52,6 +52,6 @@ public class DataAccess{
                 return null;
             }
         }.execute();
-        */
+
     }
 }

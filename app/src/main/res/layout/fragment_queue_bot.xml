@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".BotQueueFragment"
     android:background="#029de8">
 
@@ -12,8 +12,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Rød"
         android:id="@+id/RødSpor"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="15dp" />
+        android:layout_alignParentBottom="false"
+        android:layout_toEndOf="@+id/GrønSpor"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,7 +25,10 @@
         android:text="Grøn"
         android:id="@+id/GrønSpor"
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="15dp" />
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,6 +37,9 @@
         android:text="Gul"
         android:id="@+id/GulSpor"
         android:layout_gravity="top|center|right"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="40dp" />
-</FrameLayout>
+        android:layout_alignParentBottom="false"
+        android:layout_toStartOf="@+id/GrønSpor"
+        android:layout_marginEnd="73dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
+</RelativeLayout>
