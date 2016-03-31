@@ -23,16 +23,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initMainFragment();
-        initTopAndButtomFragments();
+        //initTopAndButtomFragments();
         initInstances();
     }
 
     private void initMainFragment() {
         FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
         //top_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+
         Fragment main_fragment = new AnimationQueueFragment();
         main_fragmentTransaction
-                .add(R.id.main_fragment, main_fragment)
+                .add(R.id.main, main_fragment)
                 .commit();
     }
 
@@ -71,14 +72,21 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_item_1:
                         main_fragment = new AnimationQueueFragment();
                         main_fragmentTransaction
-                                .replace(R.id.main_fragment, main_fragment)
+                                .replace(R.id.main, main_fragment)
                                 .commit();
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.navigation_item_2:
                         main_fragment = new TriangerInfoFragment();
                         main_fragmentTransaction
-                                .replace(R.id.main_fragment, main_fragment)
+                                .replace(R.id.main, main_fragment)
+                                .commit();
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.navigation_item_3:
+                        main_fragment = new DrawQueueFragment();
+                        main_fragmentTransaction
+                                .replace(R.id.main, main_fragment)
                                 .commit();
                         drawerLayout.closeDrawers();
                         break;

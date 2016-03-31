@@ -12,6 +12,11 @@
                 android:id="@+id/navigation_item_2"
                 android:icon="@drawable/ic_launcher"
                 android:title="@string/navigation_view_item_2" />
+
+            <item
+                android:id="@+id/navigation_item_3"
+                android:icon="@drawable/ic_launcher"
+                android:title="DrawQueueTest" />
         </menu>
     </item>
 </menu>
