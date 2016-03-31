@@ -16,26 +16,36 @@ public class DrawQueueFragment extends Fragment{
 
 
     View minGrafik;
-    String teksten = "TEST TEST";
+    String teksten = "TEST";
+    int x;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
         minGrafik = new View(getActivity()) {
 
+
             @Override
             protected void onDraw(Canvas c) {
-                Paint tekstStregtype = new Paint();
-                tekstStregtype.setColor(Color.GREEN);
-                tekstStregtype.setTextSize(24);
-                c.rotate(23, 0, 0); // getWidth()/2, getHeight()/2// rotér 23 grader om midten
-                c.drawText(teksten, 0, 20, tekstStregtype);
+
+                int x = getWidth();
+                int y = getHeight();
+                int radius;
+                radius = 100;
+                Paint paint = new Paint();
+                paint.setStyle(Paint.Style.FILL);
+                paint.setColor(Color.WHITE);
+                c.drawPaint(paint);
+                // Use Color.parseColor to define HTML colors
+                paint.setColor(Color.parseColor("#CD5C5C"));
+                c.drawCircle(x / 2, y / 2, radius, paint);
             }
         };
+        TableLayout tableLayout = new TableLayout(getActivity());
 
+            tableLayout.addView(minGrafik);
 
-
-        return minGrafik;
+        return tableLayout;
     }
 
 }
