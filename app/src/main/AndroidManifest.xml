@@ -10,13 +10,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.f2016.dtu.androidventeliste.LoginActivity">
+        <activity android:name="com.f2016.dtu.androidventeliste.LoginActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name="com.f2016.dtu.androidventeliste.MainActivity"></activity>
+        <activity android:name="com.f2016.dtu.androidventeliste.MainActivity" android:screenOrientation="portrait"></activity>
 
     </application>
 

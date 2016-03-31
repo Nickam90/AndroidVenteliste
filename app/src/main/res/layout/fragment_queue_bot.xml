@@ -12,7 +12,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Rød"
         android:id="@+id/RødSpor"
-        android:layout_gravity="left|top"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="15dp" />
 

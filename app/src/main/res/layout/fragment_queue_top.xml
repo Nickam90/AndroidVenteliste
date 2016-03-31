@@ -14,7 +14,7 @@
         android:id="@+id/YouAreNoText"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="90dp" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:id="@+id/NoInQueueField"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,6 +35,6 @@
         android:id="@+id/inQueueText"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="110dp" />
 </RelativeLayout>
