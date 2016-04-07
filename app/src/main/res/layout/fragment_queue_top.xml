@@ -6,7 +6,10 @@
     tools:context=".TopQueueFragment"
     android:orientation="horizontal"
     android:gravity="center"
-    android:background="#029de8">
+    android:background="#029de8"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
 
     <TextView
         android:layout_width="wrap_content"
