@@ -1,4 +1,4 @@
-package com.f2016.dtu.androidventeliste;
+package com.f2016.dtu.androidventeliste.Utils;
 
 /**
  * Created by nicka on 17-03-2016.

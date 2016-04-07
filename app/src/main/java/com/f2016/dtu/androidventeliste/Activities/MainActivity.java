@@ -1,4 +1,4 @@
-package com.f2016.dtu.androidventeliste;
+package com.f2016.dtu.androidventeliste.Activities;
 
 import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
@@ -10,6 +10,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarDrawerToggle;
+
+import com.f2016.dtu.androidventeliste.Fragments.BotQueueFragment;
+import com.f2016.dtu.androidventeliste.Fragments.DrawQueueFragment;
+import com.f2016.dtu.androidventeliste.R;
+import com.f2016.dtu.androidventeliste.Fragments.TopQueueFragment;
+import com.f2016.dtu.androidventeliste.Fragments.TriangerInfoFragment;
+import com.f2016.dtu.androidventeliste.Fragments.ViewPagerFragment;
 
 public class MainActivity extends AppCompatActivity {
 

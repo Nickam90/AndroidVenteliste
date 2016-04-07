@@ -1,8 +1,7 @@
-package com.f2016.dtu.androidventeliste;
+package com.f2016.dtu.androidventeliste.Fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -10,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.f2016.dtu.androidventeliste.R;
 
 /**
  * Created by Marie on 07/04/16.
