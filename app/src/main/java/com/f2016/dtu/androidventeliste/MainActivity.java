@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 switch (id) {
                     case R.id.navigation_item_1:
-                        main_fragment = new AnimationQueueFragment();
+                        main_fragment = new ViewPagerFragment();
                         break;
                     case R.id.navigation_item_2:
                         main_fragment = new TriangerInfoFragment();
