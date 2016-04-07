@@ -36,7 +36,7 @@ public class DrawQueueFragment extends Fragment{
                     int x = getWidth();
                     int y = getHeight();
                     int placementx = 35;
-                    int placementy = 70;
+                    int placementy = 30;
                     int radius;
                     radius = 15;
                     Paint paint = new Paint();

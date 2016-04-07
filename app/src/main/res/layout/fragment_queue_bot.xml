@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
     tools:context=".BotQueueFragment"
+    android:weightSum="3"
     android:background="#029de8">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0px"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_weight="1"
         android:text="Rød"
         android:id="@+id/RødSpor"
-        android:layout_alignParentBottom="false"
-        android:layout_toEndOf="@+id/GrønSpor"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp" />
+        android:gravity="center" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0px"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Grøn"
         android:id="@+id/GrønSpor"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp" />
+        android:gravity="center"
+     />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0px"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Gul"
         android:id="@+id/GulSpor"
-        android:layout_gravity="top|center|right"
-        android:layout_alignParentBottom="false"
-        android:layout_toStartOf="@+id/GrønSpor"
-        android:layout_marginEnd="73dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp" />
-</RelativeLayout>
+        android:gravity="center"
+  />
+</LinearLayout>
