@@ -3,10 +3,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Opdater</string>
     <string name="navigation_view_item_1">Hjem</string>
-    <string name="navigation_view_item_2">Hvad er Triangering</string>
-    <string name="navigation_view_item_3">Information</string>
+    <string name="navigation_view_item_2">Triangering Info</string>
+    <string name="navigation_view_item_3">Demo - 5min</string>
     <string name="navigation_view_item_4">Tilbage</string>
-    <string name="navigation_view_category_1">Acute menu</string>
+    <string name="navigation_view_category_1">Android Venteliste Menu</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
