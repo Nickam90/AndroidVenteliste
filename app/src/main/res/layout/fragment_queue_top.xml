@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".TopQueueFragment"
+    android:orientation="horizontal"
+    android:gravity="center"
     android:background="#029de8">
 
     <TextView
@@ -12,9 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Du er nr. "
         android:id="@+id/YouAreNoText"
-        android:layout_marginLeft="90dp"
-        android:layout_alignTop="@+id/NoInQueueField"
-        android:layout_toStartOf="@+id/NoInQueueField" />
+    />
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,10 +22,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="NULL"
         android:id="@+id/NoInQueueField"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp" />
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +30,5 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=" i køen"
         android:id="@+id/inQueueText"
-        android:layout_marginRight="110dp"
-        android:layout_alignTop="@+id/NoInQueueField"
-        android:layout_toEndOf="@+id/NoInQueueField" />
-</RelativeLayout>
+        />
+</LinearLayout>

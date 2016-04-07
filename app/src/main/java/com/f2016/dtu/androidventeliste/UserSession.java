@@ -32,9 +32,7 @@ public class UserSession extends Application{
         return queueNumber;
     }
 
-    public static void setQueueNumber(int queueNumber) {
-        UserSession.queueNumber = queueNumber;
-    }
+    public static void setQueueNumber(int queueNumber) { UserSession.queueNumber = queueNumber; }
 
     public static int getQueueLenght() {
         return queueLenght;
