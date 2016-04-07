@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
         //top_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
 
-        Fragment main_fragment = new AnimationQueueFragment();
+        Fragment main_fragment = new ViewPagerFragment();
         main_fragmentTransaction
                 .add(R.id.main_fragment, main_fragment)
                 .commit();
