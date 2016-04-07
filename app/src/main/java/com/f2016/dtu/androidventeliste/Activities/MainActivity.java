@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         Toast.makeText(MainActivity.this,
                                 startDemoText, Toast.LENGTH_LONG).show();
-                        demoSession = new DemoSession(5, MainActivity.this);
+                        demoSession = new DemoSession(6, MainActivity.this);
 
                         /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                         builder.setMessage(toastText);
