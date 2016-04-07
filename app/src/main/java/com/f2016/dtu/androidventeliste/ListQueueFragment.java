@@ -36,7 +36,6 @@ public class ListQueueFragment extends Fragment {
     private void setDynamicData(View view){
         ListView queueList = (ListView) view.findViewById(R.id.queue_list);
 
-
         String[] queueArray = new String[UserSession.getQueueLenght()];
         for(int i = 0; i < queueArray.length; i++){
             if(i+1 == UserSession.getQueueNumber()){
