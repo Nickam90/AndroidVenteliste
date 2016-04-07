@@ -61,7 +61,7 @@ public class ViewPagerFragment extends Fragment {
                     return new DrawQueueFragment();
 
                 case 2:
-                    return new AnimationQueueFragment();
+                    return new ListQueueFragment();
 
                default:
                     return new AnimationQueueFragment();
