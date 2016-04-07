@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment main_fragment = new AnimationQueueFragment();
         main_fragmentTransaction
-                .add(R.id.main, main_fragment)
+                .add(R.id.main_fragment, main_fragment)
                 .commit();
     }
 
@@ -71,25 +71,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.navigation_item_1:
                         main_fragment = new AnimationQueueFragment();
-                        main_fragmentTransaction
-                                .replace(R.id.main, main_fragment)
-                                .commit();
-                        drawerLayout.closeDrawers();
                         break;
                     case R.id.navigation_item_2:
                         main_fragment = new TriangerInfoFragment();
-                        main_fragmentTransaction
-                                .replace(R.id.main, main_fragment)
-                                .commit();
-                        drawerLayout.closeDrawers();
                         break;
                     case R.id.navigation_item_3:
                         main_fragment = new DrawQueueFragment();
-                        main_fragmentTransaction
-                                .replace(R.id.main, main_fragment)
-                                .commit();
-                        drawerLayout.closeDrawers();
                         break;
+                }
+                if(main_fragment != null) {
+                    main_fragmentTransaction
+                            .replace(R.id.main_fragment, main_fragment)
+                            .commit();
+                    drawerLayout.closeDrawers();
                 }
                 return false;
             }
