@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".TopQueueFragment"
+    tools:context=".Fragments.TopQueueFragment"
     android:orientation="horizontal"
     android:gravity="center"
     android:background="#029de8">

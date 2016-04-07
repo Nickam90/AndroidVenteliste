@@ -1,4 +1,4 @@
-package com.f2016.dtu.androidventeliste;
+package com.f2016.dtu.androidventeliste.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import com.f2016.dtu.androidventeliste.Utils.DataAccess;
+import com.f2016.dtu.androidventeliste.R;
+import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 public class LoginActivity extends AppCompatActivity {
 

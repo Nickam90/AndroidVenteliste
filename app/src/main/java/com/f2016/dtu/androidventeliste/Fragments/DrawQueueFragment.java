@@ -1,7 +1,5 @@
-package com.f2016.dtu.androidventeliste;
+package com.f2016.dtu.androidventeliste.Fragments;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -12,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
+
+import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 
 public class DrawQueueFragment extends Fragment{

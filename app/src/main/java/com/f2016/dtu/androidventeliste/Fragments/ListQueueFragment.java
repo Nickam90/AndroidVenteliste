@@ -1,4 +1,4 @@
-package com.f2016.dtu.androidventeliste;
+package com.f2016.dtu.androidventeliste.Fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.f2016.dtu.androidventeliste.R;
+import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.f2016.dtu.androidventeliste;
+package com.f2016.dtu.androidventeliste.Fragments;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,6 +17,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.f2016.dtu.androidventeliste.R;
 
 
 public class TriangerInfoFragment extends Fragment {
