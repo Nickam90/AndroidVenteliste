@@ -94,7 +94,8 @@ public class DrawQueueFragment extends Fragment{
                                 paint.setColor(Color.parseColor("#FFF9F7F7"));
                                 //Draw mouth
                                 paint.setStyle(Paint.Style.STROKE);
-                                c.drawArc(new RectF(placementx - (onePercentWidthInt * 5), placementy - (onePercentWidthInt * 8), placementx + (onePercentWidthInt * 5), placementy - (onePercentWidthInt * 7)), 0, -180, true, paint);
+
+                                c.drawArc(new RectF(placementx - (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 9), placementx + (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 5   )), 0, -180, false, paint);
                                 //Draw eyes
                                 c.drawOval(placementx - (onePercentWidthInt*2), placementy - (onePercentWidthInt*5), placementx - (onePercentWidthInt*1), placementy - (onePercentWidthInt*3), paint);
                                 c.drawOval(placementx + (onePercentWidthInt*1), placementy - (onePercentWidthInt*5), placementx + (onePercentWidthInt*2), placementy - (onePercentWidthInt*3), paint);
