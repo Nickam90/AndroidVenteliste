@@ -20,7 +20,10 @@ public class TopQueueFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_queue_top, container, false);
         TextView noInQueueFieldView = (TextView) view.findViewById(R.id.NoInQueueField);
         int noInQ = UserSession.getQueueNumber();
-        noInQueueFieldView.setText("5");
+        noInQueueFieldView.setText("" + noInQ);
         return view;
+
+
     }
+
 }

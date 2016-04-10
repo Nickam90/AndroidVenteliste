@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.f2016.dtu.androidventeliste.Activities.MainActivity;
+import com.f2016.dtu.androidventeliste.R;
 
 import java.util.Timer;
 
@@ -27,13 +28,14 @@ public class DemoSession {
         eventIndex = 0;
         demoCaller = caller;
         UserSession.setQueueLenght(36);
-        UserSession.setQueueNumber(29);
+        UserSession.setQueueNumber(4);
 
         demoSession = new Runnable() {
             @Override
             public void run() {
                 eventHandler();
                 eventIndex++;
+
                 if(eventIndex < numberOfEvents) {
                     demoHandler.postDelayed(this, eventTime);
                 }
@@ -52,14 +54,14 @@ public class DemoSession {
                 break;
             case 1:
                 UserSession.setQueueLenght(UserSession.getQueueLenght() - 3);
-                UserSession.setQueueNumber(UserSession.getQueueNumber() - 3);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 1);
 
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 2:
                 UserSession.setQueueLenght(UserSession.getQueueLenght() -5);
-                UserSession.setQueueNumber(UserSession.getQueueNumber() - 5);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 1);
 
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
@@ -70,7 +72,7 @@ public class DemoSession {
                 builder.show();
 
                 UserSession.setQueueLenght(UserSession.getQueueLenght() + 20);
-                UserSession.setQueueNumber(UserSession.getQueueNumber() + 20);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() + 3);
 
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
