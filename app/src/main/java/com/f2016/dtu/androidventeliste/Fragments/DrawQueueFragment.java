@@ -71,6 +71,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
                         paint.setAntiAlias(true);
                         paint.setStrokeWidth(radius / 14.0f);
                         paint.setColor(Color.WHITE);
+                        paint.setTextSize(onePercentWidthInt*10);
                         c.drawPaint(paint);
 
 
@@ -83,6 +84,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
                             if (k == UserSession.getQueueNumber()){
                                 paint.setStyle(Paint.Style.FILL);
                                 paint.setColor(Color.parseColor("#009ce8"));
+                                c.drawText("" + k, onePercentWidthInt * 7, placementy+onePercentWidthInt*3, paint);
 
                                 if (findflag) {
                                     setMyPlace(placementy);
@@ -95,6 +97,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
                             if (k!=UserSession.getQueueNumber()) {
                                 paint.setStyle(Paint.Style.FILL);
                                 paint.setColor(Color.parseColor("#000000"));
+                                c.drawText(""+k, onePercentWidthInt*7, placementy+onePercentWidthInt*3, paint);
                             }
 
 
@@ -110,13 +113,12 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
 
                                 c.drawArc(new RectF(placementx - (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 9), placementx + (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 5)), 0, -180, false, paint);
                                 //Draw eyes
-                                c.drawOval(placementx - (onePercentWidthInt*2), placementy - (onePercentWidthInt*5), placementx - (onePercentWidthInt*1), placementy - (onePercentWidthInt*3), paint);
+                                c.drawOval(placementx - (onePercentWidthInt*2), placementy - (onePercentWidthInt*5), placementx - (onePercentWidthInt*1), placementy - (onePercentWidthInt * 3), paint);
                                 c.drawOval(placementx + (onePercentWidthInt * 1), placementy - (onePercentWidthInt * 5), placementx + (onePercentWidthInt * 2), placementy - (onePercentWidthInt * 3), paint);
 
                                 //place que number text
-                                paint.setTextSize(onePercentWidthInt*10);
-                                paint.setColor(Color.BLACK);
-                                c.drawText(""+k, onePercentWidthInt*5, placementy+onePercentWidthInt*3, paint);
+
+
 
                                 placementy = placementy+onePercentWidthInt*30;
                                 k++;
