@@ -9,24 +9,29 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TableLayout;
 
 
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 
-public class DrawQueueFragment extends Fragment{
+public class DrawQueueFragment extends Fragment implements View.OnClickListener{
 
 
     View minGrafik;
+    int navigation;
+    ScrollView test;
+    boolean findflag;
     int k;
-    int placementy;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -54,7 +59,7 @@ public class DrawQueueFragment extends Fragment{
                         //Height attributes
                         double onePercentHeight = getHeight() * 0.01;
                         int onePercentHeightInt = (int) onePercentHeight;
-                        placementy = bitmapsize+onePercentWidthInt*20;
+                        int placementy = bitmapsize+onePercentWidthInt*20;
 
                         //Radius of smileys
                         int radius = (int) onePercentWidthInt*12;
@@ -67,16 +72,24 @@ public class DrawQueueFragment extends Fragment{
                         paint.setStrokeWidth(radius / 14.0f);
                         paint.setColor(Color.WHITE);
                         c.drawPaint(paint);
-
+                        UserSession.setQueueLenght(40);
 
 
                             c.drawBitmap(bitmapNurse, bitmapplacement, 0, paint);
-
-                            for (k=1;k<=UserSession.getQueueLenght();k++) {
+                            k=1;
+                            while (k<=UserSession.getQueueLenght()){
+                           // for (k=1;k<=UserSession.getQueueLenght();k++) {
 
                             if (k == UserSession.getQueueNumber()){
                                 paint.setStyle(Paint.Style.FILL);
                                 paint.setColor(Color.parseColor("#009ce8"));
+
+                                if (findflag) {
+                                    setMyPlace(placementy);
+                                    findflag=false;
+                                }
+
+
                             }
 
                             if (k!=UserSession.getQueueNumber()) {
@@ -95,33 +108,60 @@ public class DrawQueueFragment extends Fragment{
                                 //Draw mouth
                                 paint.setStyle(Paint.Style.STROKE);
 
-                                c.drawArc(new RectF(placementx - (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 9), placementx + (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 5   )), 0, -180, false, paint);
+                                c.drawArc(new RectF(placementx - (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 9), placementx + (onePercentWidthInt * 7), placementy - (onePercentWidthInt * 5)), 0, -180, false, paint);
                                 //Draw eyes
                                 c.drawOval(placementx - (onePercentWidthInt*2), placementy - (onePercentWidthInt*5), placementx - (onePercentWidthInt*1), placementy - (onePercentWidthInt*3), paint);
-                                c.drawOval(placementx + (onePercentWidthInt*1), placementy - (onePercentWidthInt*5), placementx + (onePercentWidthInt*2), placementy - (onePercentWidthInt*3), paint);
+                                c.drawOval(placementx + (onePercentWidthInt * 1), placementy - (onePercentWidthInt * 5), placementx + (onePercentWidthInt * 2), placementy - (onePercentWidthInt * 3), paint);
+
+                                //place que number text
+                                paint.setTextSize(onePercentWidthInt*10);
+                                paint.setColor(Color.BLACK);
+                                c.drawText(""+k, onePercentWidthInt*5, placementy+onePercentWidthInt*3, paint);
 
                                 placementy = placementy+onePercentWidthInt*30;
+                                k++;
 
                     }
-
+                //Log.d("hov", "HVAD ER tester " + tester+" "+k);
                 minGrafik.setLayoutParams(new LinearLayout.LayoutParams(getWidth(),placementy));
-                invalidate();
+               invalidate();
             }
 
         };
 
+        TableLayout tableLayout = new TableLayout(getActivity());
 
-
-        Log.d("hej","HVAD ER PLACEMENT "+placementy);
+        Button findMe = new Button(getContext());
+        findMe.setOnClickListener((View.OnClickListener) this);
+        findMe.setText("Find mig");
         LinearLayout holder = new LinearLayout(getActivity());
-        holder.addView(minGrafik);
-        ScrollView test = new ScrollView(getActivity());
+
+        tableLayout.addView(findMe);
+        tableLayout.addView(minGrafik);
+        holder.addView(tableLayout);
+
+        test = new ScrollView(getActivity());
         test.setFillViewport(true);
         test.setSmoothScrollingEnabled(true);
 
         test.addView(holder);
 
+
+
         return test;
+    }
+
+    public void setMyPlace(int a) {
+
+        this.navigation = a;
+        test.scrollTo(0, navigation);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        findflag=true;
+
     }
 
 

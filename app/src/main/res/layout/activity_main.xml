@@ -29,13 +29,12 @@
             tools:layout="@layout/fragment_queue_top"
             />
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:name="com.f2016.dtu.androidventeliste.Fragments.AnimationQueueFragment"
         android:id="@+id/main_fragment"
         android:layout_weight="8">
-    </fragment>
+    </FrameLayout>
 
 
     <fragment
