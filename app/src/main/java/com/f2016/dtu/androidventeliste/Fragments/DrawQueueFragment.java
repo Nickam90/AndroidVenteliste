@@ -52,13 +52,11 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
 
                         int bitmapsize = bitmapNurse.getHeight();
                         //Width attributes
-                        double onePercentWidth = getWidth() * 0.01;
+                        double onePercentWidth = getWidth() * 0.005;
                         int onePercentWidthInt = (int) onePercentWidth;
                         int placementx = (int) getWidth()/2;
 
                         //Height attributes
-                        double onePercentHeight = getHeight() * 0.01;
-                        int onePercentHeightInt = (int) onePercentHeight;
                         int placementy = bitmapsize+onePercentWidthInt*20;
 
                         //Radius of smileys
@@ -72,8 +70,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
                         paint.setStrokeWidth(radius / 14.0f);
                         paint.setColor(Color.WHITE);
                         c.drawPaint(paint);
-                        UserSession.setQueueLenght(40);
-                        UserSession.setQueueNumber(25);
+
 
 
                             c.drawBitmap(bitmapNurse, bitmapplacement, 0, paint);
