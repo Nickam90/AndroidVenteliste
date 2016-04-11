@@ -7,13 +7,15 @@
     android:gravity="center"
     tools:context=".Fragments.BotQueueFragment"
     android:weightSum="3"
-    android:background="#029de8">
+    android:background="#009ce8"
+    >
 
     <TextView
         android:layout_width="0px"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_weight="1"
+        android:textColor="#ffffff"
         android:text="Rød"
         android:id="@+id/RødSpor"
         android:gravity="center" />
@@ -23,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
         android:text="Grøn"
         android:id="@+id/GrønSpor"
         android:gravity="center"
@@ -33,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
         android:text="Gul"
         android:id="@+id/GulSpor"
         android:gravity="center"

@@ -5,6 +5,14 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
+import com.f2016.dtu.androidventeliste.Activities.MainActivity;
+import com.f2016.dtu.androidventeliste.R;
+
+import java.util.Timer;
+
+/**
+ * Created by nicka on 07-04-2016.
+ */
 public class DemoSession {
 
     private Runnable demoSession;
@@ -20,7 +28,7 @@ public class DemoSession {
         eventIndex = 0;
         demoCaller = caller;
         UserSession.setQueueLenght(36);
-        UserSession.setQueueNumber(11);
+        UserSession.setQueueNumber(25);
 
         demoSession = new Runnable() {
             @Override
@@ -63,21 +71,21 @@ public class DemoSession {
                 builder.setMessage("Færdsels uheld på O3 motorvejen. \nForventes længere ventetid.");
                 builder.show();
 
-                UserSession.setQueueLenght(UserSession.getQueueLenght() + 10);
-                UserSession.setQueueNumber(UserSession.getQueueNumber() + 10);
+                UserSession.setQueueLenght(UserSession.getQueueLenght() + 20);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() + 20);
 
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 4:
-                UserSession.setQueueLenght(UserSession.getQueueLenght() - 3);
-                UserSession.setQueueNumber(UserSession.getQueueNumber() - 3);
+                UserSession.setQueueLenght(UserSession.getQueueLenght() - 6);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 6);
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 5:
-                UserSession.setQueueLenght(UserSession.getQueueLenght() - 6);
-                UserSession.setQueueNumber(UserSession.getQueueNumber() - 6);
+                UserSession.setQueueLenght(UserSession.getQueueLenght() - 10);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 10);
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
