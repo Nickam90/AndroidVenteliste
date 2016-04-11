@@ -33,14 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         loginNumberInput4 = (EditText)findViewById(R.id.loginNumberField4);
         loginNumberInput5 = (EditText)findViewById(R.id.loginNumberField5);
         loginNumberInput6 = (EditText)findViewById(R.id.loginNumberField6);
-/*
-        loginNumberInput1.setOnKeyListener(keyPressHandler);
-        loginNumberInput2.setOnKeyListener(keyPressHandler);
-        loginNumberInput3.setOnKeyListener(keyPressHandler);
-        loginNumberInput4.setOnKeyListener(keyPressHandler);
-        loginNumberInput5.setOnKeyListener(keyPressHandler);
-        loginNumberInput6.setOnKeyListener(keyPressHandler);
-        */
 
         loginNumberInput1.addTextChangedListener(new onTextChangeListner());
         loginNumberInput2.addTextChangedListener(new onTextChangeListner());
@@ -93,21 +85,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     };
-
-    /*View.OnKeyListener keyPressHandler = new View.OnKeyListener() {
-        @Override
-        public boolean onKey(View v, int keyCode, KeyEvent event) {
-            if(event.getAction() == KeyEvent.ACTION_UP ) {
-               Log.d("KeyEvent UP", "Pressed " + event.getCharacters() + ", " + event.getKeyCode());
-                if (event.getKeyCode() > 6 && event.getKeyCode() < 17) {
-                    changeInputFocus(true);
-                }
-                return true;
-            }
-            return false;
-        }
-    };
-    */
 
     private void changeInputFocus(boolean right) {
         int key = focusIndex;
@@ -179,26 +156,14 @@ public class LoginActivity extends AppCompatActivity {
             UserSession.setPatientName("Tester");
             UserSession.setQueueLenght(9);
             UserSession.setQueueNumber(5);
+            UserSession.setPatientTriage("RED");
             startActivity(new Intent(this, MainActivity.class));
         }
     }
 
     private boolean checkNumberInput(String input){
-        /*if(input == "0" || input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "8" || input == "9"){
-            return true;
-        }
-        return false;*/
         if(input.matches("\\d")) return true;
         return false;
-/*
-        try {
-            int num = Integer.parseInt(input);
-            Log.i("",num+" is a number");
-            return true;
-        } catch (NumberFormatException e) {
-            Log.i("",input+"is not a number");
-            return false;
-        }*/
     }
 
     class onTextChangeListner implements TextWatcher{

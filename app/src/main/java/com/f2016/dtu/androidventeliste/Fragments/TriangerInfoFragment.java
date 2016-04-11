@@ -33,6 +33,4 @@ public class TriangerInfoFragment extends Fragment {
         myWebView.setWebViewClient(new WebViewClient());
         return view;
     }
-
-
 }

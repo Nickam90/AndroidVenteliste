@@ -2,15 +2,18 @@ package com.f2016.dtu.androidventeliste.Utils;
 
 import android.app.Application;
 
-/**
- * Created by nicka on 12-03-2016.
- */
 public class UserSession extends Application{
     private static String patientName;
     private static String patientCode;
     private static int queueNumber;
     private static int queueLenght;
+    private static String patientTriage;
 
+    public static String getPatientTriage() {
+        return patientTriage;
+    }
+
+    public static void setPatientTriage(String patientTriage) { UserSession.patientTriage = patientTriage; }
 
     public static String getPatientName() {
         return patientName;
