@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -34,8 +37,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
     int k;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
+        setHasOptionsMenu(true);
 
         minGrafik = new View(getActivity()) {
 
@@ -130,12 +132,12 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
         TableLayout tableLayout = new TableLayout(getActivity());
 
 
-        Button findMe = new Button(getContext());
-        findMe.setOnClickListener((View.OnClickListener) this);
-        findMe.setText("Find mig");
+        //Button findMe = new Button(getContext());
+        //findMe.setOnClickListener((View.OnClickListener) this);
+        //findMe.setText("Find mig");
         LinearLayout holder = new LinearLayout(getActivity());
 
-        tableLayout.addView(findMe);
+        //tableLayout.addView(findMe);
         tableLayout.addView(minGrafik);
         holder.addView(tableLayout);
 
@@ -153,13 +155,34 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
     public void setMyPlace(int a) {
 
         this.navigation = a;
-        test.smoothScrollTo(0, navigation);
+        double me = (int) navigation * 0.8;
+        int meme = (int) me;
+        test.smoothScrollTo(0, meme);
     }
 
 
     @Override
     public void onClick(View v) {
         findflag=true;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    // Inflate the menu; this adds items to the action bar if it is present.
+        inflater.inflate(R.menu.menu_main, menu);
+       //return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.findme){
+            Log.d("test","HVAD SKER DER HER I KNAPPEN");
+            findflag=true;
+        }
+
+        return true;
     }
 
 
