@@ -73,6 +73,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
                         paint.setColor(Color.WHITE);
                         c.drawPaint(paint);
                         UserSession.setQueueLenght(40);
+                        UserSession.setQueueNumber(25);
 
 
                             c.drawBitmap(bitmapNurse, bitmapplacement, 0, paint);
@@ -131,6 +132,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
 
         TableLayout tableLayout = new TableLayout(getActivity());
 
+
         Button findMe = new Button(getContext());
         findMe.setOnClickListener((View.OnClickListener) this);
         findMe.setText("Find mig");
@@ -154,14 +156,13 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
     public void setMyPlace(int a) {
 
         this.navigation = a;
-        test.scrollTo(0, navigation);
+        test.smoothScrollTo(0, navigation);
     }
 
 
     @Override
     public void onClick(View v) {
         findflag=true;
-
     }
 
 
