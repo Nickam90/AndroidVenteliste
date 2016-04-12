@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.f2016.dtu.androidventeliste.R;
+import com.f2016.dtu.androidventeliste.Utils.CustomArrayAdapter;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -27,6 +28,7 @@ public class ListQueueFragment extends Fragment {
         view = inflater.inflate(R.layout.list_queue, container, false);
         setDynamicData();
         customHandler.postDelayed(updateTextThread, 0);
+
         return view;
     }
 
@@ -41,6 +43,7 @@ public class ListQueueFragment extends Fragment {
     };
 
     private void setDynamicData(){
+
         queueLenght = UserSession.getQueueLenght();
         queueNumber = UserSession.getQueueNumber();
 
@@ -71,7 +74,8 @@ public class ListQueueFragment extends Fragment {
                 return -1;
             }
         });
-        ArrayAdapter<String> adapter2 = new ArrayAdapter(queueList.getContext(), android.R.layout.simple_list_item_1, queueArray);
+        ArrayAdapter<String> adapter2 = new CustomArrayAdapter(queueList.getContext(), android.R.layout.simple_list_item_1, queueArray);
         queueList.setAdapter(adapter2);
+        view.invalidate();
     }
 }

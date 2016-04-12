@@ -3,9 +3,11 @@ package com.f2016.dtu.androidventeliste.Fragments;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -52,11 +54,25 @@ public class AnimationQueueFragment extends Fragment{
     }
 
     private void placePictureInQueue() {
-      /*  ImageView imageView = new ImageView(layout.getContext());
-        imageView.setImageResource(R.drawable.blaamand);
-        //setting image position
-        imageView.getLayoutParams().height = 50;
-        imageView.getLayoutParams().height = 30;
-        layout.addView(imageView);*/
+        try {
+            ImageView imageView = new ImageView(layout.getContext());
+            imageView.setImageResource(R.drawable.blaamand);
+
+            imageView.setLayoutParams(new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT));
+            imageView.getLayoutParams().width = 30;
+            imageView.getLayoutParams().height = 50;
+
+            //setting image position
+            //imageView.setLayoutParams();setMaxHeight(50);
+            //imageView.setMaxWidth(30);
+            layout.addView(imageView);
+            //layout.invalidate();
+            //getActivity().setContentView(layout);
+        }
+        catch (Exception e){
+            Log.d("Error", e.getMessage());
+        }
     }
 }
