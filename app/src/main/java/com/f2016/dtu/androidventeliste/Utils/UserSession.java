@@ -7,41 +7,64 @@ public class UserSession extends Application{
     private static String patientCode;
     private static int queueNumber;
     private static int queueLenght;
-    private static String patientTriage;
+    private static int patientTriageId;
+    private static int hospitalId;
 
-    public static String getPatientTriage() {
-        return patientTriage;
+    public static String getTriageName(){
+       switch (patientTriageId){
+           case 1:
+               return "rød";
+           case 2:
+               return "gul";
+           case 3:
+               return "grøn";
+           case 4:
+               return "blå";
+           default:
+               return null;
+       }
     }
 
-    public static void setPatientTriage(String patientTriage) { UserSession.patientTriage = patientTriage; }
+    public static String getTriageColorCode(){
+        switch (patientTriageId){
+            case 1:
+                return "#ef4428";
+            case 2:
+                return "#e5d600";
+            case 3:
+                return "#91a043";
+            case 4:
+                return "#096ab1";
+            default:
+                return null;
+        }
+    }
 
+
+    public static int getPatientTriageId() { return patientTriageId; }
+    public static void setPatientTriageId(int patientTriage) { UserSession.patientTriageId = patientTriage; }
     public static String getPatientName() {
         return patientName;
     }
-
-    public static void setPatientName(String patientName) {
-        UserSession.patientName = patientName;
-    }
-
+    public static void setPatientName(String patientName) { UserSession.patientName = patientName; }
     public static String getPatientCode() {
         return patientCode;
     }
-
     public static void setPatientCode(String patientCode) {
         UserSession.patientCode = patientCode;
     }
-
     public static int getQueueNumber() {
         return queueNumber;
     }
-
     public static void setQueueNumber(int queueNumber) { UserSession.queueNumber = queueNumber; }
-
     public static int getQueueLenght() {
         return queueLenght;
     }
-
-    public static void setQueueLenght(int queueLenght) {
-        UserSession.queueLenght = queueLenght;
+    public static void setQueueLenght(int queueLenght) { UserSession.queueLenght = queueLenght; }
+    public static int getHospitalId() {
+        return hospitalId;
+    }
+    public static void setHospitalId(int hospitalId) {
+        UserSession.hospitalId = hospitalId;
     }
 }

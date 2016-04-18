@@ -49,21 +49,21 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    private void initTopAndButtomFragments() {
+    /*private void initTopAndButtomFragments() {
         FragmentTransaction top_fragmentTransaction = getSupportFragmentManager().beginTransaction();
         //top_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
         Fragment top_fragment = new TopQueueFragment();
         top_fragmentTransaction
-                .add(R.id.top_fragment, top_fragment)
+                .replace(R.id.top_fragment, top_fragment)
                 .commit();
 
         FragmentTransaction bot_fragmentTransaction = getSupportFragmentManager().beginTransaction();
         //bot_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
         Fragment buttom_fragment = new BotQueueFragment();
         bot_fragmentTransaction
-                .add(R.id.buttom_fragment, buttom_fragment)
+                .replace(R.id.buttom_fragment, buttom_fragment)
                 .commit();
-    }
+    }*/
 
     private void initInstances() {
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.hello_world, R.string.hello_world);
         drawerLayout.setDrawerListener(drawerToggle);
-
         navigation = (NavigationView) findViewById(R.id.navigation_view);
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         main_fragment = new TriangerInfoFragment();
                         break;
                     case R.id.navigation_item_3:
-                        String startDemoText = "Starter demo version på 5 min";
+                        String startDemoText = "Starter demo version på 1 min";
                         String stopDemoText = "Stopper demo";
                         if(demoSession != null){
                             Toast.makeText(MainActivity.this,
@@ -100,6 +99,24 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,
                                 startDemoText, Toast.LENGTH_LONG).show();
                         demoSession = new DemoSession(6, MainActivity.this);
+
+                        /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setMessage(toastText);
+                        builder.show();*/
+                        //main_fragment = new DrawQueueFragment();
+                        break;
+                    case R.id.navigation_item_4:
+                        String startDemoText1 = "Starter demo version på 2 min";
+                        String stopDemoText1 = "Stopper demo";
+                        if(demoSession != null){
+                            Toast.makeText(MainActivity.this,
+                                    stopDemoText1, Toast.LENGTH_LONG).show();
+                            demoSession.stopDemo();
+                            demoSession = null;
+                        }
+                        Toast.makeText(MainActivity.this,
+                                startDemoText1, Toast.LENGTH_LONG).show();
+                        demoSession = new DemoSession(12, MainActivity.this);
 
                         /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                         builder.setMessage(toastText);
@@ -131,28 +148,11 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    //@Override
-    //public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-    //   getMenuInflater().inflate(R.menu.menu_main, menu);
-    //   return true;
-    //}
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item))
             return true;
-
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        //if (id == R.id.action_settings) {
-        //    return true;
-        //}
-
         return super.onOptionsItemSelected(item);
     }
 }

@@ -45,6 +45,7 @@ public class DemoSession {
     }
 
     private void eventHandler() {
+        AlertDialog.Builder builder;
         switch (eventIndex) {
             case 0:
                 UserSession.setQueueLenght(UserSession.getQueueLenght() - 1);
@@ -67,7 +68,7 @@ public class DemoSession {
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 3:
-                AlertDialog.Builder builder = new AlertDialog.Builder(demoCaller);
+                builder = new AlertDialog.Builder(demoCaller);
                 builder.setMessage("Færdsels uheld på O3 motorvejen. \nForventes længere ventetid.");
                 builder.show();
 
@@ -90,17 +91,48 @@ public class DemoSession {
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 6:
+                UserSession.setQueueLenght(UserSession.getQueueLenght() - 2);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 2);
                 Toast.makeText(demoCaller,
-                        "Tom event " + eventIndex, Toast.LENGTH_LONG).show();
+                        "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 7:
+                UserSession.setQueueLenght(UserSession.getQueueLenght() - 5);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 3);
                 Toast.makeText(demoCaller,
-                        "Tom event " + eventIndex, Toast.LENGTH_LONG).show();
+                        "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 8:
+                UserSession.setQueueLenght(UserSession.getQueueLenght() - 6);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 6);
                 Toast.makeText(demoCaller,
-                        "Tom event " + eventIndex, Toast.LENGTH_LONG).show();
+                        "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
+            case 9:
+                UserSession.setQueueLenght(UserSession.getQueueLenght() - 5);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 5);
+                Toast.makeText(demoCaller,
+                        "Event " + eventIndex, Toast.LENGTH_LONG).show();
+                break;
+            case 10:
+                builder = new AlertDialog.Builder(demoCaller);
+                builder.setMessage("Sammenstød i lyskryds. \nForventes længere ventetid.");
+                builder.setTitle("DEMO BESKED");
+                builder.show();
+
+
+                UserSession.setQueueLenght(UserSession.getQueueLenght() + 4);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() + 4);
+                Toast.makeText(demoCaller,
+                        "Event " + eventIndex, Toast.LENGTH_LONG).show();
+                break;
+            case 11:
+                UserSession.setQueueLenght(UserSession.getQueueLenght() + 6);
+                UserSession.setQueueNumber(UserSession.getQueueNumber() - 5);
+                Toast.makeText(demoCaller,
+                        "Event " + eventIndex, Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 break;
         }

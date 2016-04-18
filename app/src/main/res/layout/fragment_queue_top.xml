@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
         android:text="Du er nr. "
         android:id="@+id/YouAreNoText"
     />
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
         android:text="NULL"
         android:id="@+id/NoInQueueField"
         />
@@ -29,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
         android:text=" i køen"
         android:id="@+id/inQueueText"
         />

@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:gravity="center"
     tools:context=".Fragments.BotQueueFragment"
-    android:weightSum="3"
+    android:weightSum="6"
     android:background="#009ce8"
     >
 
@@ -14,10 +14,10 @@
         android:layout_width="0px"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_weight="1"
+        android:layout_weight="4"
         android:textColor="#ffffff"
-        android:text="Rød"
-        android:id="@+id/RødSpor"
+        android:text="Estimeret ventetid er: "
+        android:id="@+id/leftText"
         android:gravity="center" />
 
     <TextView
@@ -26,8 +26,8 @@
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
-        android:text="Grøn"
-        android:id="@+id/GrønSpor"
+        android:text="..."
+        android:id="@+id/centerText"
         android:gravity="center"
      />
 
@@ -37,8 +37,8 @@
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
-        android:text="Gul"
-        android:id="@+id/GulSpor"
+        android:text="min"
+        android:id="@+id/rightText"
         android:gravity="center"
   />
 </LinearLayout>

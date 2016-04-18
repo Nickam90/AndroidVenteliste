@@ -154,9 +154,9 @@ public class LoginActivity extends AppCompatActivity {
         if(loginSuccess){
             UserSession.setPatientCode(code);
             UserSession.setPatientName("Tester");
-            UserSession.setQueueLenght(9);
-            UserSession.setQueueNumber(5);
-            UserSession.setPatientTriage("RED");
+            UserSession.setQueueLenght(14);
+            UserSession.setQueueNumber(12);
+            UserSession.setPatientTriageId(1);
             startActivity(new Intent(this, MainActivity.class));
         }
     }
