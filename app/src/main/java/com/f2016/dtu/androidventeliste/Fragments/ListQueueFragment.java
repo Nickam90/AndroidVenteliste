@@ -1,9 +1,14 @@
 package com.f2016.dtu.androidventeliste.Fragments;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -19,12 +24,15 @@ import java.util.Comparator;
  */
 public class ListQueueFragment extends Fragment {
 
+
     private View view;
     private Handler customHandler = new Handler();
     private int queueLenght;
     private int queueNumber;
+    private ListView queueList;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         view = inflater.inflate(R.layout.list_queue, container, false);
         setDynamicData();
         customHandler.postDelayed(updateTextThread, 0);
@@ -47,7 +55,7 @@ public class ListQueueFragment extends Fragment {
         queueLenght = UserSession.getQueueLenght();
         queueNumber = UserSession.getQueueNumber();
 
-        ListView queueList = (ListView) view.findViewById(R.id.queue_list);
+        queueList = (ListView) view.findViewById(R.id.queue_list);
 
         String[] queueArray = new String[queueLenght];
         for(int i = 0; i < queueArray.length; i++){
@@ -77,5 +85,25 @@ public class ListQueueFragment extends Fragment {
         ArrayAdapter<String> adapter2 = new CustomArrayAdapter(queueList.getContext(), android.R.layout.simple_list_item_1, queueArray);
         queueList.setAdapter(adapter2);
         view.invalidate();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        inflater.inflate(R.menu.menu_main, menu);
+        //return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.findme){
+            Log.d("test", "HVAD SKER DER HER I KNAPPEN list");
+            queueList.smoothScrollToPosition(queueNumber);
+            //getListView().smoothScrollToPosition(21);
+            //findflag=true;
+        }
+
+        return true;
     }
 }

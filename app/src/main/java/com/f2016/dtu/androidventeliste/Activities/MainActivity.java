@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.f2016.dtu.androidventeliste.Fragments.BotQueueFragment;
 import com.f2016.dtu.androidventeliste.Fragments.DrawQueueFragment;
+import com.f2016.dtu.androidventeliste.Fragments.HelpFragment;
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Fragments.TopQueueFragment;
 import com.f2016.dtu.androidventeliste.Fragments.TriangerInfoFragment;
@@ -122,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
                         builder.setMessage(toastText);
                         builder.show();*/
                         //main_fragment = new DrawQueueFragment();
+                        break;
+                    case R.id.navigation_item_5:
+                        main_fragment = new HelpFragment();
                         break;
                 }
                 if(main_fragment != null) {

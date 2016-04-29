@@ -6,22 +6,27 @@
             <item
                 android:id="@+id/navigation_item_1"
                 android:checked="true"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/ic_home_"
                 android:title="@string/navigation_view_item_1" />
             <item
                 android:id="@+id/navigation_item_2"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/ic_assignment"
                 android:title="@string/navigation_view_item_2" />
 
             <item
                 android:id="@+id/navigation_item_3"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/ic_play_circle_outline"
                 android:title="@string/navigation_view_item_3" />
 
             <item
                 android:id="@+id/navigation_item_4"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/ic_play_circle_outline"
                 android:title="@string/navigation_view_item_4" />
+
+            <item
+                android:id="@+id/navigation_item_5"
+                android:icon="@drawable/ic_info_outline"
+                android:title="@string/navigation_view_item_5" />
         </menu>
     </item>
 </menu>
