@@ -49,20 +49,42 @@ public class AnimationQueueFragment extends Fragment{
         layout.removeAllViews();
 
         for(int i = 0; i < queueLenght; i++){
-            placePictureInQueue();
+            if(UserSession.getQueueNumber()-1 == i){
+                placePictureInQueue(UserSession.getTriageName());
+            }
+            else {
+                placePictureInQueue("sort");
+            }
         }
     }
 
-    private void placePictureInQueue() {
+    private void placePictureInQueue(String color) {
         try {
             ImageView imageView = new ImageView(layout.getContext());
-            imageView.setImageResource(R.drawable.blaamand);
+            if(color.equals("sort")){
+                imageView.setImageResource(R.drawable.sortmand);
+            }
+            else if(color.equals("rød")){
+                imageView.setImageResource(R.drawable.rodmand);
+            }
+            else if(color.equals("orange")){
+                imageView.setImageResource(R.drawable.orangemand);
+            }
+            else if(color.equals("gul")){
+                imageView.setImageResource(R.drawable.gulmand);
+            }
+            else if(color.equals("grøn")){
+                imageView.setImageResource(R.drawable.gronmand);
+            }
+            else if(color.equals("blå")){
+                imageView.setImageResource(R.drawable.blaamand);
+            }
 
             imageView.setLayoutParams(new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT));
-            imageView.getLayoutParams().width = 30;
-            imageView.getLayoutParams().height = 50;
+            imageView.getLayoutParams().width = 60;
+            imageView.getLayoutParams().height = 100;
 
             //setting image position
             //imageView.setLayoutParams();setMaxHeight(50);
