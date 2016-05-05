@@ -1,6 +1,7 @@
 package com.f2016.dtu.androidventeliste.Activities;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,18 +16,22 @@ import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private Handler customHandler = new Handler();
     private EditText loginNumberInput1;
     private EditText loginNumberInput2;
     private EditText loginNumberInput3;
     private EditText loginNumberInput4;
     private EditText loginNumberInput5;
     private EditText loginNumberInput6;
-    int focusIndex;
+    private int focusIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        UserSession.setUserAuth(false);
+        customHandler.postDelayed(checkLoggedInThread, 0);
+
         loginNumberInput1 = (EditText)findViewById(R.id.loginNumberField1);
         loginNumberInput2 = (EditText)findViewById(R.id.loginNumberField2);
         loginNumberInput3 = (EditText)findViewById(R.id.loginNumberField3);
@@ -148,8 +153,9 @@ public class LoginActivity extends AppCompatActivity {
         loginNumberInput5.setText("");
         loginNumberInput6.setText("");
 
+        new DataAccess().loginUser(code);
 
-        new DataAccess().testDBConn();
+        /*
         boolean loginSuccess = true;
         if(loginSuccess){
             UserSession.setPatientCode(code);
@@ -159,12 +165,30 @@ public class LoginActivity extends AppCompatActivity {
             UserSession.setPatientTriageId(1);
             startActivity(new Intent(this, MainActivity.class));
         }
+        */
     }
 
     private boolean checkNumberInput(String input){
         if(input.matches("\\d")) return true;
         return false;
     }
+
+    private void moveToMain(){
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    private Runnable checkLoggedInThread = new Runnable() {
+
+        public void run() {
+            if(UserSession.getUserAuth()) {
+                moveToMain();
+                customHandler.removeCallbacks(this);
+            }
+            else{
+                customHandler.postDelayed(this, 500);
+            }
+        }
+    };
 
     class onTextChangeListner implements TextWatcher{
 

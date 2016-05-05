@@ -63,7 +63,6 @@ public class DemoSession {
             case 2:
                 UserSession.setQueueLenght(UserSession.getQueueLenght() -5);
                 UserSession.setQueueNumber(UserSession.getQueueNumber() - 5);
-
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;

@@ -21,7 +21,9 @@ import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Fragments.TopQueueFragment;
 import com.f2016.dtu.androidventeliste.Fragments.TriangerInfoFragment;
 import com.f2016.dtu.androidventeliste.Fragments.ViewPagerFragment;
+import com.f2016.dtu.androidventeliste.Utils.DataAccess;
 import com.f2016.dtu.androidventeliste.Utils.DemoSession;
+import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,43 +31,41 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navigation;
     private DemoSession demoSession;
+    private Handler customHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        customHandler.postDelayed(updateDataThread, 0);
         initMainFragment();
-        //initTopAndButtomFragments();
         initInstances();
     }
 
     private void initMainFragment() {
         FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        //top_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-
         Fragment main_fragment = new ViewPagerFragment();
         main_fragmentTransaction
                 .add(R.id.main_fragment, main_fragment)
                 .commit();
     }
 
-    /*private void initTopAndButtomFragments() {
-        FragmentTransaction top_fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        //top_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-        Fragment top_fragment = new TopQueueFragment();
-        top_fragmentTransaction
-                .replace(R.id.top_fragment, top_fragment)
-                .commit();
+    private Runnable updateDataThread = new Runnable() {
 
-        FragmentTransaction bot_fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        //bot_fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-        Fragment buttom_fragment = new BotQueueFragment();
-        bot_fragmentTransaction
-                .replace(R.id.buttom_fragment, buttom_fragment)
-                .commit();
-    }*/
-
+        public void run() {
+            if(demoSession == null) {
+                DataAccess data = new DataAccess();
+                data.checkUserActive(UserSession.getPatientCode());
+                if (UserSession.getUserAuth()) {
+                    data.updateData();
+                    customHandler.postDelayed(this, 30000);
+                } else {
+                    customHandler.removeCallbacks(this);
+                    finish();
+                }
+            }
+        }
+    };
     private void initInstances() {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -100,11 +100,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,
                                 startDemoText, Toast.LENGTH_LONG).show();
                         demoSession = new DemoSession(6, MainActivity.this);
-
-                        /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setMessage(toastText);
-                        builder.show();*/
-                        //main_fragment = new DrawQueueFragment();
                         break;
                     case R.id.navigation_item_4:
                         String startDemoText1 = "Starter demo version på 2 min";
@@ -118,13 +113,14 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,
                                 startDemoText1, Toast.LENGTH_LONG).show();
                         demoSession = new DemoSession(12, MainActivity.this);
-
-                        /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setMessage(toastText);
-                        builder.show();*/
-                        //main_fragment = new DrawQueueFragment();
                         break;
                     case R.id.navigation_item_5:
+                        if(demoSession != null) {
+                            demoSession.stopDemo();
+                            demoSession = null;
+                        }
+                        break;
+                    case R.id.navigation_item_6:
                         main_fragment = new HelpFragment();
                         break;
                 }

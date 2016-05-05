@@ -3,8 +3,10 @@ package com.f2016.dtu.androidventeliste.Utils;
 import android.app.Application;
 
 public class UserSession extends Application{
+    private static boolean userAuthenticated;
     private static String patientName;
     private static String patientCode;
+    private static int patientRegId;
     private static int queueNumber;
     private static int queueLenght;
     private static int patientTriageId;
@@ -12,8 +14,10 @@ public class UserSession extends Application{
 
     public static String getTriageName(){
        switch (patientTriageId){
-           case 1:
+           case 0:
                return "rød";
+           case 1:
+               return "orange";
            case 2:
                return "gul";
            case 3:
@@ -27,8 +31,10 @@ public class UserSession extends Application{
 
     public static String getTriageColorCode(){
         switch (patientTriageId){
-            case 1:
+            case 0:
                 return "#ef4428";
+            case 1:
+                return "#FFA500";
             case 2:
                 return "#e5d600";
             case 3:
@@ -53,6 +59,10 @@ public class UserSession extends Application{
     public static void setPatientCode(String patientCode) {
         UserSession.patientCode = patientCode;
     }
+    public static int getPatientRegId() {
+        return patientRegId;
+    }
+    public static void setPatientRegId(int patientRegId) { UserSession.patientRegId = patientRegId; }
     public static int getQueueNumber() {
         return queueNumber;
     }
@@ -66,5 +76,11 @@ public class UserSession extends Application{
     }
     public static void setHospitalId(int hospitalId) {
         UserSession.hospitalId = hospitalId;
+    }
+    public static boolean getUserAuth() {
+        return userAuthenticated;
+    }
+    public static void setUserAuth(boolean userAuth) {
+        UserSession.userAuthenticated = userAuth;
     }
 }

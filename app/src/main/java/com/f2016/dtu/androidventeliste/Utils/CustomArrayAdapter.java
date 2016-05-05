@@ -19,7 +19,7 @@ public class CustomArrayAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = super.getView(position, convertView, parent);
         if(position == UserSession.getQueueNumber()-1){
-            view.setBackgroundColor(Color.parseColor("#E9BC03"));
+            view.setBackgroundColor(Color.parseColor(UserSession.getTriageColorCode()));
         }
         else{
             view.setBackgroundColor(Color.parseColor("#FFFFFF"));
