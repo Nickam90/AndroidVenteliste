@@ -83,7 +83,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener{
 
                             if (k == UserSession.getQueueNumber()){
                                 paint.setStyle(Paint.Style.FILL);
-                                paint.setColor(Color.parseColor("#009ce8"));
+                                paint.setColor(Color.parseColor(UserSession.getTriageColorCode()));
                                 c.drawText("" + k, onePercentWidthInt * 7, placementy+onePercentWidthInt*3, paint);
 
                                 if (findflag) {
