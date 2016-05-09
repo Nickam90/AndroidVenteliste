@@ -25,7 +25,7 @@
 
             <item
                 android:id="@+id/navigation_item_5"
-                android:icon="@drawable/ic_play_circle_outline"
+                android:icon="@drawable/ic_stop_circle_outline"
                 android:title="@string/navigation_view_item_5" />
 
             <item
