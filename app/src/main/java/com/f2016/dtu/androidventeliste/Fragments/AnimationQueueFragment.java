@@ -1,16 +1,17 @@
 package com.f2016.dtu.androidventeliste.Fragments;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
@@ -21,7 +22,8 @@ public class AnimationQueueFragment extends Fragment{
     private Handler customHandler = new Handler();
     private int queueLenght;
     private int queueNumber;
-    LinearLayout layout;
+    private LinearLayout layout;
+    private LinearLayout curLine;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,26 +43,50 @@ public class AnimationQueueFragment extends Fragment{
         }
     };
 
-    private void setDynamicData(){
+    private void setDynamicData() {
         queueLenght = UserSession.getQueueLenght();
         queueNumber = UserSession.getQueueNumber();
 
-        layout = (LinearLayout)view.findViewById(R.id.queueLayout);
+        layout = (LinearLayout) view.findViewById(R.id.queueLayout);
         layout.removeAllViews();
+        newViewLine();
+        placePictureInQueue("start");
 
-        for(int i = 0; i < queueLenght; i++){
-            if(UserSession.getQueueNumber()-1 == i){
-                placePictureInQueue(UserSession.getTriageName());
+        for (int i = 0; i < queueLenght; i++) {
+            if (i % 10 == 0) {
+
+                newViewLine();
             }
-            else {
+            if (UserSession.getQueueNumber() - 1 == i) {
+                placePictureInQueue(UserSession.getTriageName());
+            } else {
                 placePictureInQueue("sort");
             }
+
         }
+    }
+
+    private void newViewLine(){
+        curLine = new LinearLayout(layout.getContext());
+        curLine.setOrientation(LinearLayout.HORIZONTAL);
+
+        LinearLayout.LayoutParams LLParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        LLParams.weight = 1f;
+
+        curLine.setLayoutParams(LLParams);
+        layout.addView(curLine);
     }
 
     private void placePictureInQueue(String color) {
         try {
-            ImageView imageView = new ImageView(layout.getContext());
+            ImageView imageView = new ImageView(curLine.getContext());
+
+            imageView.setLayoutParams(new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT));
+            imageView.getLayoutParams().width = 60;
+            imageView.getLayoutParams().height = 100;
+
             if(color.equals("sort")){
                 imageView.setImageResource(R.drawable.sortmand);
             }
@@ -79,19 +105,23 @@ public class AnimationQueueFragment extends Fragment{
             else if(color.equals("blå")){
                 imageView.setImageResource(R.drawable.blaamand);
             }
+            else if(color.equals("start")){
+                imageView.setImageResource(R.drawable.waitingman);
+                imageView.getLayoutParams().width = 180;
+                imageView.getLayoutParams().height = 300;
+            }
 
-            imageView.setLayoutParams(new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.WRAP_CONTENT,
-                    FrameLayout.LayoutParams.WRAP_CONTENT));
-            imageView.getLayoutParams().width = 60;
-            imageView.getLayoutParams().height = 100;
 
-            //setting image position
-            //imageView.setLayoutParams();setMaxHeight(50);
-            //imageView.setMaxWidth(30);
-            layout.addView(imageView);
-            //layout.invalidate();
-            //getActivity().setContentView(layout);
+/*
+            FrameLayout imageFrame = new FrameLayout(curLine.getContext());
+            LinearLayout.LayoutParams imageFrameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
+            imageFrameParams.weight = 1f;
+            imageFrame.setLayoutParams(imageFrameParams);
+
+            imageFrame.addView(imageView);
+*/
+            curLine.addView(imageView);
+
         }
         catch (Exception e){
             Log.d("Error", e.getMessage());

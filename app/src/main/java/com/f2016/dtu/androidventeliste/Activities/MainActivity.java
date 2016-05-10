@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
                         if(demoSession != null) {
                             demoSession.stopDemo();
                             demoSession = null;
+                            if(customHandler != null){
+                                customHandler.removeCallbacks(updateDataThread);
+                            }
+                            customHandler.postDelayed(updateDataThread, 5000);
                         }
                         break;
                     case R.id.navigation_item_6:
