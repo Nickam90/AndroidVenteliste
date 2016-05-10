@@ -79,6 +79,7 @@ public class AnimationQueueFragment extends Fragment{
 
     private void placePictureInQueue(String color) {
         try {
+
             ImageView imageView = new ImageView(curLine.getContext());
 
             imageView.setLayoutParams(new FrameLayout.LayoutParams(
