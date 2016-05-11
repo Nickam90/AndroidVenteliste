@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 data.checkUserActive(UserSession.getPatientCode());
                 if (UserSession.getUserAuth()) {
                     data.updateData();
-                    customHandler.postDelayed(this, 30000);
+                    customHandler.postDelayed(this, 10000);
                 } else {
                     customHandler.removeCallbacks(this);
                     finish();
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
-
+                String stopDemoText = "Stopper demo";
                 Fragment main_fragment = null;
                 FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 switch (id) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_item_3:
                         String startDemoText = "Starter demo version på 1 min";
-                        String stopDemoText = "Stopper demo";
+
                         if(demoSession != null){
                             Toast.makeText(MainActivity.this,
                                     stopDemoText, Toast.LENGTH_LONG).show();
@@ -103,10 +103,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_item_4:
                         String startDemoText1 = "Starter demo version på 2 min";
-                        String stopDemoText1 = "Stopper demo";
                         if(demoSession != null){
                             Toast.makeText(MainActivity.this,
-                                    stopDemoText1, Toast.LENGTH_LONG).show();
+                                    stopDemoText, Toast.LENGTH_LONG).show();
                             demoSession.stopDemo();
                             demoSession = null;
                         }
@@ -116,12 +115,14 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_item_5:
                         if(demoSession != null) {
+                            Toast.makeText(MainActivity.this,
+                                    stopDemoText, Toast.LENGTH_LONG).show();
                             demoSession.stopDemo();
                             demoSession = null;
                             if(customHandler != null){
                                 customHandler.removeCallbacks(updateDataThread);
                             }
-                            customHandler.postDelayed(updateDataThread, 5000);
+                            customHandler.postDelayed(updateDataThread, 100);
                         }
                         break;
                     case R.id.navigation_item_6:

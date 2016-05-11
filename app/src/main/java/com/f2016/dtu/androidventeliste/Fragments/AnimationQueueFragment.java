@@ -1,14 +1,15 @@
 package com.f2016.dtu.androidventeliste.Fragments;
 
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,6 +25,7 @@ public class AnimationQueueFragment extends Fragment{
     private int queueNumber;
     private LinearLayout layout;
     private LinearLayout curLine;
+    private int lines;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,15 +51,23 @@ public class AnimationQueueFragment extends Fragment{
 
         layout = (LinearLayout) view.findViewById(R.id.queueLayout);
         layout.removeAllViews();
-        newViewLine();
-        placePictureInQueue("start");
 
-        for (int i = 0; i < queueLenght; i++) {
+        if (queueLenght <= 10) {
+            lines = 1;
+        } else {
+            lines = ((queueLenght - (queueLenght % 10)) / 10+1);
+        }
+        layout.setWeightSum(lines);
+
+        for (int i = 0; i < queueLenght+1; i++) {
+
             if (i % 10 == 0) {
-
                 newViewLine();
             }
-            if (UserSession.getQueueNumber() - 1 == i) {
+            if(i == 0){
+                placePictureInQueue("start");
+            }
+            else if (UserSession.getQueueNumber() == i) {
                 placePictureInQueue(UserSession.getTriageName());
             } else {
                 placePictureInQueue("sort");
@@ -69,24 +79,30 @@ public class AnimationQueueFragment extends Fragment{
     private void newViewLine(){
         curLine = new LinearLayout(layout.getContext());
         curLine.setOrientation(LinearLayout.HORIZONTAL);
-
+        curLine.setGravity(Gravity.CENTER_VERTICAL);
         LinearLayout.LayoutParams LLParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
-        LLParams.weight = 1f;
-
+        LLParams.weight = 1;
         curLine.setLayoutParams(LLParams);
         layout.addView(curLine);
     }
 
     private void placePictureInQueue(String color) {
         try {
+            WindowManager wm = (WindowManager) layout.getContext().getSystemService(layout.getContext().WINDOW_SERVICE);
 
+            DisplayMetrics metrics = new DisplayMetrics();
+            wm.getDefaultDisplay().getMetrics(metrics);
+
+            int width = metrics.widthPixels;
+            int height = metrics.heightPixels;
+int scale = height/width;
             ImageView imageView = new ImageView(curLine.getContext());
 
             imageView.setLayoutParams(new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT));
-            imageView.getLayoutParams().width = 60;
-            imageView.getLayoutParams().height = 100;
+            imageView.getLayoutParams().width = width/10;
+            imageView.getLayoutParams().height = imageView.getLayoutParams().width * scale;
 
             if(color.equals("sort")){
                 imageView.setImageResource(R.drawable.sortmand);
@@ -108,8 +124,8 @@ public class AnimationQueueFragment extends Fragment{
             }
             else if(color.equals("start")){
                 imageView.setImageResource(R.drawable.waitingman);
-                imageView.getLayoutParams().width = 180;
-                imageView.getLayoutParams().height = 300;
+                //imageView.getLayoutParams().width = 180;
+                //imageView.getLayoutParams().height = 300;
             }
 
 
