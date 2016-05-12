@@ -3,6 +3,8 @@ package com.f2016.dtu.androidventeliste.Utils;
 import android.app.Application;
 
 public class UserSession extends Application{
+    private static DemoSession demoSession;
+
     private static boolean userAuthenticated;
     private static String patientName;
     private static String patientCode;
@@ -46,6 +48,8 @@ public class UserSession extends Application{
         }
     }
 
+    public static void setDemoSession(DemoSession demo){demoSession = demo;}
+    public static DemoSession getDemoSession(){return demoSession;}
 
     public static int getPatientTriageId() { return patientTriageId; }
     public static void setPatientTriageId(int patientTriage) { UserSession.patientTriageId = patientTriage; }

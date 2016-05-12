@@ -1,5 +1,6 @@
 package com.f2016.dtu.androidventeliste.Fragments;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -94,6 +95,7 @@ public class AnimationQueueFragment extends Fragment{
         curLine.setGravity(Gravity.CENTER_VERTICAL);
         LinearLayout.LayoutParams LLParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
         LLParams.weight = 1;
+
         curLine.setLayoutParams(LLParams);
         layout.addView(curLine);
     }
@@ -105,16 +107,17 @@ public class AnimationQueueFragment extends Fragment{
             DisplayMetrics metrics = new DisplayMetrics();
             wm.getDefaultDisplay().getMetrics(metrics);
 
-            int width = metrics.widthPixels;
-            int height = metrics.heightPixels;
-int scale = height/width;
+            double width = metrics.widthPixels;
+            double height = metrics.heightPixels;
+            double scale = height/width;
+            Log.d("Scale", String.valueOf(scale));
             ImageView imageView = new ImageView(curLine.getContext());
 
             imageView.setLayoutParams(new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT));
-            imageView.getLayoutParams().width = width/10;
-            imageView.getLayoutParams().height = imageView.getLayoutParams().width * scale;
+            imageView.getLayoutParams().width = (int) width/10;
+            imageView.getLayoutParams().height = (int) (imageView.getLayoutParams().width * scale);
 
             if(color.equals("sort")){
                 imageView.setImageResource(R.drawable.sortmand);

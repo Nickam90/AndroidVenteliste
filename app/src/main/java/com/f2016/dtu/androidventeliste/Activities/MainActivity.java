@@ -6,19 +6,13 @@ import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.Toast;
-
-import com.f2016.dtu.androidventeliste.Fragments.BotQueueFragment;
-import com.f2016.dtu.androidventeliste.Fragments.DrawQueueFragment;
 import com.f2016.dtu.androidventeliste.Fragments.HelpFragment;
 import com.f2016.dtu.androidventeliste.R;
-import com.f2016.dtu.androidventeliste.Fragments.TopQueueFragment;
 import com.f2016.dtu.androidventeliste.Fragments.TriangerInfoFragment;
 import com.f2016.dtu.androidventeliste.Fragments.ViewPagerFragment;
 import com.f2016.dtu.androidventeliste.Utils.DataAccess;
@@ -30,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navigation;
-    private DemoSession demoSession;
+
     private Handler customHandler = new Handler();
 
     @Override
@@ -72,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable updateDataThread = new Runnable() {
 
         public void run() {
-            if(demoSession == null) {
+            if(UserSession.getDemoSession() == null) {
                 DataAccess data = new DataAccess();
                 data.checkUserActive(UserSession.getPatientCode());
                 if (UserSession.getUserAuth()) {
@@ -110,35 +104,35 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_item_3:
                         String startDemoText = "Starter demo version på 1 min";
 
-                        if(demoSession != null){
+                        if (UserSession.getDemoSession() != null) {
                             Toast.makeText(MainActivity.this,
                                     stopDemoText, Toast.LENGTH_LONG).show();
-                            demoSession.stopDemo();
-                            demoSession = null;
+                            UserSession.getDemoSession().stopDemo();
+                            UserSession.setDemoSession(null);
                         }
                         Toast.makeText(MainActivity.this,
                                 startDemoText, Toast.LENGTH_LONG).show();
-                        demoSession = new DemoSession(6, MainActivity.this);
+                        UserSession.setDemoSession(new DemoSession(6, MainActivity.this));
                         break;
                     case R.id.navigation_item_4:
                         String startDemoText1 = "Starter demo version på 2 min";
-                        if(demoSession != null){
+                        if (UserSession.getDemoSession() != null) {
                             Toast.makeText(MainActivity.this,
                                     stopDemoText, Toast.LENGTH_LONG).show();
-                            demoSession.stopDemo();
-                            demoSession = null;
+                            UserSession.getDemoSession().stopDemo();
+                            UserSession.setDemoSession(null);
                         }
                         Toast.makeText(MainActivity.this,
                                 startDemoText1, Toast.LENGTH_LONG).show();
-                        demoSession = new DemoSession(12, MainActivity.this);
+                        UserSession.setDemoSession(new DemoSession(12, MainActivity.this));
                         break;
                     case R.id.navigation_item_5:
-                        if(demoSession != null) {
+                        if ( UserSession.getDemoSession() != null) {
                             Toast.makeText(MainActivity.this,
                                     stopDemoText, Toast.LENGTH_LONG).show();
-                            demoSession.stopDemo();
-                            demoSession = null;
-                            if(customHandler != null){
+                            UserSession.getDemoSession().stopDemo();
+                            UserSession.setDemoSession(null);
+                            if (customHandler != null) {
                                 customHandler.removeCallbacks(updateDataThread);
                             }
                             customHandler.postDelayed(updateDataThread, 100);
@@ -148,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                         main_fragment = new HelpFragment();
                         break;
                 }
-                if(main_fragment != null) {
+                if (main_fragment != null) {
                     main_fragmentTransaction
                             .replace(R.id.main_fragment, main_fragment)
                             .commit();
