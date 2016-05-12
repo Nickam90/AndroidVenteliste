@@ -42,6 +42,25 @@ public class MainActivity extends AppCompatActivity {
         initInstances();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        customHandler.removeCallbacks(updateDataThread);
+        customHandler= null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        customHandler.postDelayed(updateDataThread, 0);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        customHandler.removeCallbacks(updateDataThread);
+    }
+
     private void initMainFragment() {
         FragmentTransaction main_fragmentTransaction = getSupportFragmentManager().beginTransaction();
         Fragment main_fragment = new ViewPagerFragment();

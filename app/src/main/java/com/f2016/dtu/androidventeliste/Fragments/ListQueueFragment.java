@@ -40,6 +40,18 @@ public class ListQueueFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        customHandler.removeCallbacks(updateTextThread);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        customHandler = null;
+    }
+
     private Runnable updateTextThread = new Runnable() {
 
         public void run() {

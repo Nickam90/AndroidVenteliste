@@ -57,7 +57,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        UserSession.setUserAuth(false);
+        customHandler.postDelayed(checkLoggedInThread, 0);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        customHandler.removeCallbacks(checkLoggedInThread);
+    }
 
     View.OnFocusChangeListener focusChangeHandler = new View.OnFocusChangeListener() {
         @Override

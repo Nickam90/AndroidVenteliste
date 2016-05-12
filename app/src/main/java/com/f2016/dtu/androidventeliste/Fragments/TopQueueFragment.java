@@ -27,6 +27,18 @@ public class TopQueueFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        customHandler.removeCallbacks(updateListThread);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        customHandler = null;
+    }
+
     private Runnable updateListThread = new Runnable() {
 
         public void run() {
