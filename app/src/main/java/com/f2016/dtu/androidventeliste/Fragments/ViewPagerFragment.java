@@ -16,7 +16,6 @@ import com.f2016.dtu.androidventeliste.R;
  * Created by Marie on 07/04/16.
  */
 public class ViewPagerFragment extends Fragment {
-
     private static final int NUM_PAGES = 3;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
@@ -27,7 +26,6 @@ public class ViewPagerFragment extends Fragment {
         mPager = (ViewPager) v.findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-
         return v;
     }
 
@@ -38,17 +36,14 @@ public class ViewPagerFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     return new AnimationQueueFragment();
-
                 case 1:
                     return new DrawQueueFragment();
-
                 case 2:
                     return new ListQueueFragment();
-
-               default:
+                default:
                     return new AnimationQueueFragment();
             }
         }

@@ -20,11 +20,9 @@ import com.f2016.dtu.androidventeliste.Utils.DemoSession;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 public class MainActivity extends AppCompatActivity {
-
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navigation;
-
     private Handler customHandler = new Handler();
 
     @Override
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         customHandler.removeCallbacks(updateDataThread);
-        customHandler= null;
+        customHandler = null;
     }
 
     @Override
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable updateDataThread = new Runnable() {
 
         public void run() {
-            if(UserSession.getDemoSession() == null) {
+            if (UserSession.getDemoSession() == null) {
                 DataAccess data = new DataAccess();
                 data.checkUserActive(UserSession.getPatientCode());
                 if (UserSession.getUserAuth()) {
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
     private void initInstances() {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -127,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         UserSession.setDemoSession(new DemoSession(12, MainActivity.this));
                         break;
                     case R.id.navigation_item_5:
-                        if ( UserSession.getDemoSession() != null) {
+                        if (UserSession.getDemoSession() != null) {
                             Toast.makeText(MainActivity.this,
                                     stopDemoText, Toast.LENGTH_LONG).show();
                             UserSession.getDemoSession().stopDemo();

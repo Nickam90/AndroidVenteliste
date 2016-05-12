@@ -5,10 +5,8 @@ package com.f2016.dtu.androidventeliste.Utils;
  */
 import android.os.AsyncTask;
 import android.util.Log;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,16 +14,8 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
-
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -33,7 +23,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-public class DataAccess{
+public class DataAccess {
     private static String standardUrl = "https://130.226.195.241:8181/RestApiAndroidVenteListe-1/webresources/dtu.restapiandroidventeliste.";
     private static String hospQueueUrl = "queue/getHospQueue/"; ///getHospQueue/{hospId}
     private static String patientHospUrl = "queue/getPatientHosp/"; //getPatientHosp/{regId}
@@ -41,65 +31,48 @@ public class DataAccess{
     private static String loginUrl = "patientreg/login/";
 
     public void loginUser(final String code) {
-    final String userCode = code;
-
+        final String userCode = code;
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    //https://130.226.195.241:8181/RestApiAndroidVenteListe-1/webresources/dtu.restapiandroidventeliste.patientreg/login/323456
-
                     String data = hentUrlForXML(standardUrl + loginUrl + userCode);
-                    if(data != null){
-
+                    if (data != null) {
                         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                         factory.setNamespaceAware(true);
                         XmlPullParser xpp = factory.newPullParser();
-
-                        xpp.setInput( new StringReader(data));
+                        xpp.setInput(new StringReader(data));
                         int eventType = xpp.getEventType();
                         while (eventType != XmlPullParser.END_DOCUMENT) {
 
-                            if(eventType == XmlPullParser.START_TAG) {
-                                System.out.println("Start tag "+xpp.getName());
-                                if(xpp.getName().equalsIgnoreCase("regId")) {
+                            if (eventType == XmlPullParser.START_TAG) {
+                                if (xpp.getName().equalsIgnoreCase("regId")) {
                                     eventType = xpp.next();
                                     if (eventType == XmlPullParser.TEXT) {
-                                        System.out.println("Text " + xpp.getText());
                                         UserSession.setPatientRegId(Integer.valueOf(xpp.getText()));
                                     }
-                                }
-                                else if(xpp.getName().equalsIgnoreCase("state")) {
+                                } else if (xpp.getName().equalsIgnoreCase("state")) {
                                     eventType = xpp.next();
                                     if (eventType == XmlPullParser.TEXT) {
-                                        System.out.println("Text " + xpp.getText());
                                         UserSession.setPatientTriageId(Integer.valueOf(xpp.getText()));
                                     }
-                                }
-                                else if(xpp.getName().equalsIgnoreCase("ciferCode")) {
+                                } else if (xpp.getName().equalsIgnoreCase("ciferCode")) {
                                     eventType = xpp.next();
                                     if (eventType == XmlPullParser.TEXT) {
-                                        System.out.println("Text " + xpp.getText());
                                         UserSession.setPatientCode(xpp.getText());
                                     }
-                                }
-
-                                else if(xpp.getName().equalsIgnoreCase("FName")) {
+                                } else if (xpp.getName().equalsIgnoreCase("FName")) {
                                     eventType = xpp.next();
                                     if (eventType == XmlPullParser.TEXT) {
-                                        System.out.println("Text " + xpp.getText());
                                         UserSession.setPatientName(xpp.getText());
                                     }
                                 }
                             }
                             eventType = xpp.next();
                         }
-                        Log.d("Data", "PatientReg: " + UserSession.getPatientRegId());
-                        Log.d("Data", "PatientTri: " + UserSession.getPatientTriageId());
-                        if(UserSession.getPatientRegId() != 0) {
+                        if (UserSession.getPatientRegId() != 0) {
                             updateData();
                         }
-
                     }
                 } catch (Exception e) {
                     Log.d("Data", e.getMessage());
@@ -115,8 +88,8 @@ public class DataAccess{
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    String data = hentUrlForXML(standardUrl+loginUrl+userCode);
-                    if(data != null) {
+                    String data = hentUrlForXML(standardUrl + loginUrl + userCode);
+                    if (data != null) {
                         UserSession.setUserAuth(true);
                     }
 
@@ -148,30 +121,27 @@ public class DataAccess{
         }.execute();
     }
 
-    public void getHospId() throws IOException{
+    public void getHospId() throws IOException {
         String regId = String.valueOf(UserSession.getPatientRegId());
-        String data = hentUrl(standardUrl+patientHospUrl+regId);
+        String data = hentUrl(standardUrl + patientHospUrl + regId);
         UserSession.setHospitalId(Integer.valueOf(data));
     }
 
     public void updateHospQueue() throws IOException {
         String hospId = String.valueOf(UserSession.getHospitalId());
-        String data = hentUrl(standardUrl+hospQueueUrl+hospId);
+        String data = hentUrl(standardUrl + hospQueueUrl + hospId);
         UserSession.setQueueLenght(Integer.valueOf(data));
     }
 
-    public void updatePatientInQueue() throws IOException{
+    public void updatePatientInQueue() throws IOException {
         String regId = String.valueOf(UserSession.getPatientRegId());
         String data = hentUrl(standardUrl + patientInQueueUrl + regId);
         UserSession.setQueueNumber(Integer.valueOf(data));
     }
 
     public String hentUrlForXML(String weburl) throws IOException {
-
         URL url = new URL(weburl);
-
         HttpURLConnection http = null;
-
         if (url.getProtocol().toLowerCase().equals("https")) {
             trustAllHosts();
             HttpsURLConnection https = (HttpsURLConnection) url.openConnection();
@@ -181,7 +151,6 @@ public class DataAccess{
             http = (HttpURLConnection) url.openConnection();
         }
         InputStream in = http.getInputStream();
-
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
         StringBuilder sb = new StringBuilder();
         String linje = br.readLine();
@@ -194,9 +163,7 @@ public class DataAccess{
 
     public String hentUrl(String weburl) throws IOException {
         URL url = new URL(weburl);
-
         HttpURLConnection http = null;
-
         if (url.getProtocol().toLowerCase().equals("https")) {
             trustAllHosts();
             HttpsURLConnection https = (HttpsURLConnection) url.openConnection();
@@ -208,16 +175,13 @@ public class DataAccess{
         InputStream in = http.getInputStream();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
-        StringBuilder sb = new StringBuilder();
         return br.readLine();
-
     }
 
     private static void trustAllHosts() {
-        // Create a trust manager that does not validate certificate chains
-        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                return new java.security.cert.X509Certificate[] {};
+                return new java.security.cert.X509Certificate[]{};
             }
 
             public void checkClientTrusted(X509Certificate[] chain,
@@ -227,9 +191,8 @@ public class DataAccess{
             public void checkServerTrusted(X509Certificate[] chain,
                                            String authType) throws CertificateException {
             }
-        } };
+        }};
 
-        // Install the all-trusting trust manager
         try {
             SSLContext sc = SSLContext.getInstance("TLS");
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
@@ -245,6 +208,4 @@ public class DataAccess{
             return true;
         }
     };
-
-
 }

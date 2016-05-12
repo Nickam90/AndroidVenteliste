@@ -23,8 +23,6 @@ import java.util.Comparator;
  * Created by Marie on 07/04/16.
  */
 public class ListQueueFragment extends Fragment {
-
-
     private View view;
     private Handler customHandler = new Handler();
     private int queueLenght;
@@ -36,7 +34,6 @@ public class ListQueueFragment extends Fragment {
         view = inflater.inflate(R.layout.list_queue, container, false);
         setDynamicData();
         customHandler.postDelayed(updateTextThread, 0);
-
         return view;
     }
 
@@ -55,29 +52,26 @@ public class ListQueueFragment extends Fragment {
     private Runnable updateTextThread = new Runnable() {
 
         public void run() {
-            if(queueLenght != UserSession.getQueueLenght() ||  queueNumber != UserSession.getQueueNumber()){
+            if (queueLenght != UserSession.getQueueLenght() || queueNumber != UserSession.getQueueNumber()) {
                 setDynamicData();
             }
             customHandler.postDelayed(this, 500);
         }
     };
 
-    private void setDynamicData(){
-
+    private void setDynamicData() {
         queueLenght = UserSession.getQueueLenght();
         queueNumber = UserSession.getQueueNumber();
-
         queueList = (ListView) view.findViewById(R.id.queue_list);
 
         String[] queueArray = new String[queueLenght];
-        for(int i = 0; i < queueArray.length; i++){
-            if(i+1 == queueNumber){
-                queueArray[i] = i+1 + ": Du er her" ;
-            }else{
-                queueArray[i] = i+1 + ": Patient " + (i+1);
+        for (int i = 0; i < queueArray.length; i++) {
+            if (i + 1 == queueNumber) {
+                queueArray[i] = i + 1 + ": Du er her";
+            } else {
+                queueArray[i] = i + 1 + ": Patient " + (i + 1);
             }
         }
-
         Arrays.sort(queueArray, new Comparator<String>() {
             @Override
             public int compare(String lhs, String rhs) {
@@ -101,21 +95,14 @@ public class ListQueueFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.menu_main, menu);
-        //return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == R.id.findme){
-            Log.d("test", "HVAD SKER DER HER I KNAPPEN list");
+        if (item.getItemId() == R.id.findme) {
             queueList.smoothScrollToPosition(queueNumber);
-            //getListView().smoothScrollToPosition(21);
-            //findflag=true;
         }
-
         return true;
     }
 }

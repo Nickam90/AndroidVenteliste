@@ -7,10 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 public class CustomArrayAdapter extends ArrayAdapter<String> {
-    public CustomArrayAdapter(Context context, int resource, int textViewResourceId, String[] objects) {
-        super(context, resource, textViewResourceId, objects);
-    }
-
     public CustomArrayAdapter(Context context, int resource, String[] objects) {
         super(context, resource, objects);
     }
@@ -18,13 +14,11 @@ public class CustomArrayAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = super.getView(position, convertView, parent);
-        if(position == UserSession.getQueueNumber()-1){
+        if (position == UserSession.getQueueNumber() - 1) {
             view.setBackgroundColor(Color.parseColor(UserSession.getTriageColorCode()));
-        }
-        else{
+        } else {
             view.setBackgroundColor(Color.parseColor("#FFFFFF"));
         }
-
         return view;
     }
 }

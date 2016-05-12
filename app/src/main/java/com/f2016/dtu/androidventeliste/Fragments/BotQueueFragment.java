@@ -15,16 +15,14 @@ import com.f2016.dtu.androidventeliste.Utils.UserSession;
  * Created by Marie on 27/03/16.
  */
 public class BotQueueFragment extends Fragment {
-
     private TextView leftTextField;
     private TextView centerTextField;
     private TextView rightTextField;
-
     private Handler customHandler = new Handler();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-         View view = inflater.inflate(R.layout.fragment_queue_bot, container, false);
+        View view = inflater.inflate(R.layout.fragment_queue_bot, container, false);
         leftTextField = (TextView) view.findViewById(R.id.leftText);
         centerTextField = (TextView) view.findViewById(R.id.centerText);
         rightTextField = (TextView) view.findViewById(R.id.rightText);
@@ -51,11 +49,10 @@ public class BotQueueFragment extends Fragment {
             int timeEstimate = noInQ * 7;
             String noText = "..";
 
-            if(timeEstimate < 60){
+            if (timeEstimate < 60) {
                 noText = String.valueOf(timeEstimate);
                 rightTextField.setText("min");
-            }
-            else {
+            } else {
                 int hours = timeEstimate / 60; //since both are ints, you get an int
                 int minutes = timeEstimate % 60;
 
@@ -70,11 +67,10 @@ public class BotQueueFragment extends Fragment {
         }
     };
 
-    private String checkFormat(String t){
-        if(t.length() == 1){
-            return "0"+t;
+    private String checkFormat(String t) {
+        if (t.length() == 1) {
+            return "0" + t;
         }
         return t;
     }
-
 }

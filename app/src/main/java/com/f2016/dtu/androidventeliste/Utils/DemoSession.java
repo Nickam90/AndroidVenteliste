@@ -5,11 +5,6 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
-import com.f2016.dtu.androidventeliste.Activities.MainActivity;
-import com.f2016.dtu.androidventeliste.R;
-
-import java.util.Timer;
-
 /**
  * Created by nicka on 07-04-2016.
  */
@@ -22,7 +17,7 @@ public class DemoSession {
     private int eventTime = 10000;
     private Activity demoCaller;
 
-    public DemoSession(int events, Activity caller){
+    public DemoSession(int events, Activity caller) {
         numberOfEvents = events;
         demoHandler = new Handler();
         eventIndex = 0;
@@ -36,7 +31,7 @@ public class DemoSession {
                 eventHandler();
                 eventIndex++;
 
-                if(eventIndex < numberOfEvents) {
+                if (eventIndex < numberOfEvents) {
                     demoHandler.postDelayed(this, eventTime);
                 }
             }
@@ -61,7 +56,7 @@ public class DemoSession {
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
                 break;
             case 2:
-                UserSession.setQueueLenght(UserSession.getQueueLenght() -5);
+                UserSession.setQueueLenght(UserSession.getQueueLenght() - 5);
                 UserSession.setQueueNumber(UserSession.getQueueNumber() - 5);
                 Toast.makeText(demoCaller,
                         "Event " + eventIndex, Toast.LENGTH_LONG).show();
@@ -137,8 +132,7 @@ public class DemoSession {
         }
     }
 
-    public void stopDemo(){
+    public void stopDemo() {
         demoHandler.removeCallbacks(demoSession);
     }
-
 }

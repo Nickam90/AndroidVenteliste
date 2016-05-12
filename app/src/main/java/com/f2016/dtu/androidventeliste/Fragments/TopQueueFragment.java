@@ -15,7 +15,6 @@ import com.f2016.dtu.androidventeliste.Utils.UserSession;
  * Created by Marie on 27/03/16.
  */
 public class TopQueueFragment extends Fragment {
-
     private Handler customHandler = new Handler();
     private TextView noInQueueFieldView;
 
@@ -48,5 +47,4 @@ public class TopQueueFragment extends Fragment {
             customHandler.postDelayed(this, 500);
         }
     };
-
 }

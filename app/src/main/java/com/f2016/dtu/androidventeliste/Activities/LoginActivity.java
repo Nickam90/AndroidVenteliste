@@ -6,16 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-
 import com.f2016.dtu.androidventeliste.Utils.DataAccess;
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
 public class LoginActivity extends AppCompatActivity {
-
     private Handler customHandler = new Handler();
     private EditText loginNumberInput1;
     private EditText loginNumberInput2;
@@ -72,8 +69,6 @@ public class LoginActivity extends AppCompatActivity {
     View.OnFocusChangeListener focusChangeHandler = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
-            //Log.d("KeyEvent UP", "Pressed " + v.getContext().getResources() + ", " + hasFocus);
-
             if(v == loginNumberInput1 && hasFocus){
                 loginNumberInput1.setText("");
                 focusIndex = 0;
@@ -145,37 +140,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-        Log.d("Login", "Login");
         String digit1 = loginNumberInput1.getText().toString();
         String digit2 = loginNumberInput2.getText().toString();
         String digit3 = loginNumberInput3.getText().toString();
         String digit4 = loginNumberInput4.getText().toString();
         String digit5 = loginNumberInput5.getText().toString();
         String digit6 = loginNumberInput6.getText().toString();
-
         String code = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
-        Log.d("Login", "Code: " + code);
-
         loginNumberInput1.setText("");
         loginNumberInput2.setText("");
         loginNumberInput3.setText("");
         loginNumberInput4.setText("");
         loginNumberInput5.setText("");
         loginNumberInput6.setText("");
-
         new DataAccess().loginUser(code);
-
-        /*
-        boolean loginSuccess = true;
-        if(loginSuccess){
-            UserSession.setPatientCode(code);
-            UserSession.setPatientName("Tester");
-            UserSession.setQueueLenght(14);
-            UserSession.setQueueNumber(12);
-            UserSession.setPatientTriageId(1);
-            startActivity(new Intent(this, MainActivity.class));
-        }
-        */
     }
 
     private boolean checkNumberInput(String input){
@@ -217,7 +195,6 @@ public class LoginActivity extends AppCompatActivity {
             if(checkNumberInput(s.toString())){
                 changeInputFocus(true);
             }
-
         }
     }
 }

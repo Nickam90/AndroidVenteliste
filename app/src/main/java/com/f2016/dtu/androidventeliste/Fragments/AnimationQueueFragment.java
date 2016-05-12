@@ -18,8 +18,7 @@ import android.widget.LinearLayout;
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
-public class AnimationQueueFragment extends Fragment{
-
+public class AnimationQueueFragment extends Fragment {
     private View view;
     private Handler customHandler = new Handler();
     private int queueLenght;
@@ -51,7 +50,7 @@ public class AnimationQueueFragment extends Fragment{
     private Runnable updateTextThread = new Runnable() {
 
         public void run() {
-            if(queueLenght != UserSession.getQueueLenght() ||  queueNumber != UserSession.getQueueNumber()){
+            if (queueLenght != UserSession.getQueueLenght() || queueNumber != UserSession.getQueueNumber()) {
                 setDynamicData();
             }
             customHandler.postDelayed(this, 500);
@@ -68,19 +67,18 @@ public class AnimationQueueFragment extends Fragment{
         if (queueLenght <= 10) {
             lines = 1;
         } else {
-            lines = ((queueLenght - (queueLenght % 10)) / 10+1);
+            lines = ((queueLenght - (queueLenght % 10)) / 10 + 1);
         }
         layout.setWeightSum(lines);
 
-        for (int i = 0; i < queueLenght+1; i++) {
+        for (int i = 0; i < queueLenght + 1; i++) {
 
             if (i % 10 == 0) {
                 newViewLine();
             }
-            if(i == 0){
+            if (i == 0) {
                 placePictureInQueue("start");
-            }
-            else if (UserSession.getQueueNumber() == i) {
+            } else if (UserSession.getQueueNumber() == i) {
                 placePictureInQueue(UserSession.getTriageName());
             } else {
                 placePictureInQueue("sort");
@@ -89,11 +87,11 @@ public class AnimationQueueFragment extends Fragment{
         }
     }
 
-    private void newViewLine(){
+    private void newViewLine() {
         curLine = new LinearLayout(layout.getContext());
         curLine.setOrientation(LinearLayout.HORIZONTAL);
         curLine.setGravity(Gravity.CENTER_VERTICAL);
-        LinearLayout.LayoutParams LLParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams LLParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         LLParams.weight = 1;
 
         curLine.setLayoutParams(LLParams);
@@ -109,53 +107,33 @@ public class AnimationQueueFragment extends Fragment{
 
             double width = metrics.widthPixels;
             double height = metrics.heightPixels;
-            double scale = height/width;
-            Log.d("Scale", String.valueOf(scale));
+            double scale = height / width;
             ImageView imageView = new ImageView(curLine.getContext());
 
             imageView.setLayoutParams(new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT));
-            imageView.getLayoutParams().width = (int) width/10;
+            imageView.getLayoutParams().width = (int) width / 10;
             imageView.getLayoutParams().height = (int) (imageView.getLayoutParams().width * scale);
 
-            if(color.equals("sort")){
+            if (color.equals("sort")) {
                 imageView.setImageResource(R.drawable.sortmand);
-            }
-            else if(color.equals("rød")){
+            } else if (color.equals("rød")) {
                 imageView.setImageResource(R.drawable.rodmand);
-            }
-            else if(color.equals("orange")){
+            } else if (color.equals("orange")) {
                 imageView.setImageResource(R.drawable.orangemand);
-            }
-            else if(color.equals("gul")){
+            } else if (color.equals("gul")) {
                 imageView.setImageResource(R.drawable.gulmand);
-            }
-            else if(color.equals("grøn")){
+            } else if (color.equals("grøn")) {
                 imageView.setImageResource(R.drawable.gronmand);
-            }
-            else if(color.equals("blå")){
+            } else if (color.equals("blå")) {
                 imageView.setImageResource(R.drawable.blaamand);
-            }
-            else if(color.equals("start")){
+            } else if (color.equals("start")) {
                 imageView.setImageResource(R.drawable.waitingman);
-                //imageView.getLayoutParams().width = 180;
-                //imageView.getLayoutParams().height = 300;
             }
-
-
-/*
-            FrameLayout imageFrame = new FrameLayout(curLine.getContext());
-            LinearLayout.LayoutParams imageFrameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
-            imageFrameParams.weight = 1f;
-            imageFrame.setLayoutParams(imageFrameParams);
-
-            imageFrame.addView(imageView);
-*/
             curLine.addView(imageView);
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.d("Error", e.getMessage());
         }
     }
