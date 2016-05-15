@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         UserSession.setUserAuth(false);
-        customHandler.postDelayed(checkLoggedInThread, 0);
+        //customHandler.postDelayed(checkLoggedInThread, 0);
 
         loginNumberInput1 = (EditText)findViewById(R.id.loginNumberField1);
         loginNumberInput2 = (EditText)findViewById(R.id.loginNumberField2);

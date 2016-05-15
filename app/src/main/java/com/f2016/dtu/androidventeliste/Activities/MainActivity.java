@@ -22,14 +22,12 @@ import com.f2016.dtu.androidventeliste.Utils.UserSession;
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
-    private NavigationView navigation;
     private Handler customHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        customHandler.postDelayed(updateDataThread, 0);
         initMainFragment();
         initInstances();
     }
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.hello_world, R.string.hello_world);
         drawerLayout.setDrawerListener(drawerToggle);
-        navigation = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigation = (NavigationView) findViewById(R.id.navigation_view);
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -102,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_item_3:
                         String startDemoText = "Starter demo version på 1 min";
-
                         if (UserSession.getDemoSession() != null) {
                             Toast.makeText(MainActivity.this,
                                     stopDemoText, Toast.LENGTH_LONG).show();
@@ -133,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
                             UserSession.setDemoSession(null);
                             if (customHandler != null) {
                                 customHandler.removeCallbacks(updateDataThread);
+                                customHandler.postDelayed(updateDataThread, 100);
                             }
-                            customHandler.postDelayed(updateDataThread, 100);
                         }
                         break;
                     case R.id.navigation_item_6:
@@ -167,9 +164,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item))
-            return true;
-        int id = item.getItemId();
-        return super.onOptionsItemSelected(item);
+        return drawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 }

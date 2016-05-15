@@ -32,7 +32,6 @@ public class ListQueueFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         view = inflater.inflate(R.layout.list_queue, container, false);
-        setDynamicData();
         customHandler.postDelayed(updateTextThread, 0);
         return view;
     }

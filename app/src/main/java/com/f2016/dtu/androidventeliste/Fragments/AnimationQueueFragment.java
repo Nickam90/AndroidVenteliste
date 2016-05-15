@@ -30,7 +30,6 @@ public class AnimationQueueFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_queue_animation, container, false);
-        setDynamicData();
         customHandler.postDelayed(updateTextThread, 0);
         return view;
     }
@@ -91,10 +90,10 @@ public class AnimationQueueFragment extends Fragment {
         curLine = new LinearLayout(layout.getContext());
         curLine.setOrientation(LinearLayout.HORIZONTAL);
         curLine.setGravity(Gravity.CENTER_VERTICAL);
-        LinearLayout.LayoutParams LLParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        LLParams.weight = 1;
+        LinearLayout.LayoutParams HorizontalLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        HorizontalLayoutParams.weight = 1;
 
-        curLine.setLayoutParams(LLParams);
+        curLine.setLayoutParams(HorizontalLayoutParams);
         layout.addView(curLine);
     }
 
