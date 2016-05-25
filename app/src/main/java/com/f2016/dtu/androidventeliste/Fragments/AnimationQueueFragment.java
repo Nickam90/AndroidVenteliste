@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
+import static android.support.v4.app.ActivityCompat.invalidateOptionsMenu;
+
 public class AnimationQueueFragment extends Fragment {
     private View view;
     private Handler customHandler = new Handler();
@@ -39,6 +41,8 @@ public class AnimationQueueFragment extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu){
         menu.clear();
+        setHasOptionsMenu(false);
+        invalidateOptionsMenu(getActivity());
     }
 
     @Override

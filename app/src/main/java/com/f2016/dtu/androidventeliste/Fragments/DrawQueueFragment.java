@@ -138,8 +138,6 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener 
         inflater.inflate(R.menu.menu_main, menu);
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.findme) {
