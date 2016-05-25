@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -30,8 +31,14 @@ public class AnimationQueueFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_queue_animation, container, false);
+        setHasOptionsMenu(true);
         customHandler.postDelayed(updateTextThread, 0);
         return view;
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu){
+        menu.clear();
     }
 
     @Override

@@ -26,6 +26,8 @@ import android.widget.TableLayout;
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
+import static android.support.v4.app.ActivityCompat.invalidateOptionsMenu;
+
 
 public class DrawQueueFragment extends Fragment implements View.OnClickListener {
     private View minGrafik;
@@ -132,8 +134,11 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
         inflater.inflate(R.menu.menu_main, menu);
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
