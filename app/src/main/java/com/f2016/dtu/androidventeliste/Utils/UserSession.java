@@ -1,8 +1,6 @@
 package com.f2016.dtu.androidventeliste.Utils;
 
-import android.app.Application;
-
-public class UserSession extends Application {
+public class UserSession {
     private static DemoSession demoSession;
     private static boolean userAuthenticated;
     private static String patientName;
