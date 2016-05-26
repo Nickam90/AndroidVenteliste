@@ -37,11 +37,11 @@ public class UserSession extends Application {
             case 1:
                 return "#FFA500";
             case 2:
-                return "#e5d600";
+                return "#ffff00";
             case 3:
-                return "#91a043";
+                return "#00ff00";
             case 4:
-                return "#096ab1";
+                return "#008ae6";
             default:
                 return null;
         }
