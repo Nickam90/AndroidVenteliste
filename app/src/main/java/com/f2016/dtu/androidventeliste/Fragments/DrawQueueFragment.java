@@ -9,30 +9,24 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.test.suitebuilder.annotation.LargeTest;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TableLayout;
 
 
 import com.f2016.dtu.androidventeliste.R;
 import com.f2016.dtu.androidventeliste.Utils.UserSession;
 
-import static android.support.v4.app.ActivityCompat.invalidateOptionsMenu;
 
-
-public class DrawQueueFragment extends Fragment implements View.OnClickListener {
+public class DrawQueueFragment extends Fragment {
     private View minGrafik;
     private int navigation;
-    private ScrollView test;
+    private ScrollView scrollViewForView;
     private boolean findflag;
     private int k;
 
@@ -62,6 +56,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener 
                 paint.setStrokeWidth(radius / 14.0f);
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(onePercentWidthInt * 10);
+
                 c.drawPaint(paint);
 
                 c.drawBitmap(bitmapNurse, bitmapplacement, 0, paint);
@@ -84,12 +79,14 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener 
                         paint.setColor(Color.parseColor("#000000"));
                         c.drawText("" + k, onePercentWidthInt * 7, placementy + onePercentWidthInt * 3, paint);
                     }
+                    //Draw feet
                     c.drawOval(placementx - (onePercentWidthInt * 11), placementy - (onePercentWidthInt * 15), placementx - (onePercentWidthInt * 2), placementy - (onePercentWidthInt * 5), paint);
                     c.drawOval(placementx + (onePercentWidthInt * 2), placementy - (onePercentWidthInt * 15), placementx + (onePercentWidthInt * 11), placementy - (onePercentWidthInt * 5), paint);
 
+                    //Draw body
                     c.drawCircle(placementx, placementy, radius, paint);
 
-                    // RectF rect1 = new RectF(placementx-(onePercentWidthInt*7), placementy-(onePercentWidthInt*10), placementx+(onePercentWidthInt*7), placementy-(onePercentWidthInt*4));
+                    //Set color for mouth and eyes
                     paint.setColor(Color.parseColor("#FFF9F7F7"));
                     //Draw mouth
                     paint.setStyle(Paint.Style.STROKE);
@@ -99,6 +96,7 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener 
                     c.drawOval(placementx - (onePercentWidthInt * 2), placementy - (onePercentWidthInt * 5), placementx - (onePercentWidthInt * 1), placementy - (onePercentWidthInt * 3), paint);
                     c.drawOval(placementx + (onePercentWidthInt * 1), placementy - (onePercentWidthInt * 5), placementx + (onePercentWidthInt * 2), placementy - (onePercentWidthInt * 3), paint);
 
+                    //Set placementy to next line
                     placementy = placementy + onePercentWidthInt * 30;
                     k++;
 
@@ -109,33 +107,27 @@ public class DrawQueueFragment extends Fragment implements View.OnClickListener 
 
         };
 
-        TableLayout tableLayout = new TableLayout(getActivity());
         LinearLayout holder = new LinearLayout(getActivity());
-        tableLayout.addView(minGrafik);
-        holder.addView(tableLayout);
-        test = new ScrollView(getActivity());
-        test.setFillViewport(true);
-        test.setSmoothScrollingEnabled(true);
-        test.addView(holder);
-        return test;
+        holder.addView(minGrafik);
+        scrollViewForView = new ScrollView(getActivity());
+        scrollViewForView.setFillViewport(true);
+        scrollViewForView.setSmoothScrollingEnabled(true);
+        scrollViewForView.addView(holder);
+        return scrollViewForView;
     }
 
     public void setMyPlace(int a) {
         this.navigation = a;
         double me = (int) navigation * 0.8;
         int meme = (int) me;
-        test.smoothScrollTo(0, meme);
-    }
-
-    @Override
-    public void onClick(View v) {
-        findflag = true;
+        scrollViewForView.smoothScrollTo(0, meme);
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
         inflater.inflate(R.menu.menu_main, menu);
+
     }
 
     @Override
